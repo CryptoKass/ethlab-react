@@ -1,6 +1,4 @@
 import { useState } from "react";
-import EthLabWalletButton from "./internal/EthLabWalletButton";
-import { DarkThemeToggle } from "flowbite-react";
 import EthLabScratchPad from "./internal/EthLabScratchPad";
 
 function App() {

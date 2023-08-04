@@ -13,7 +13,6 @@ interface EthLabContext {
   provider: Provider | null;
   signer: Signer | null;
   address: string;
-
   setProvider: (provider: Provider) => void;
   setSigner: (signer: Signer) => void;
   setAddress: (address: string) => void;

@@ -70,9 +70,9 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
             </Button>
 
             <div className="flex gap-4 items-center">
-              <hr className="w-full" />
-              <span className="text-neutral-500">Other</span>
-              <hr className="w-full" />
+              <hr className="w-full dark:border-gray-500" />
+              <span className="dark:text-gray-400">Other</span>
+              <hr className="w-full dark:border-gray-500" />
             </div>
             <Button.Group>
               <TextInput
@@ -97,7 +97,7 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
               <Button color="gray">Connect</Button>
             </Button.Group>
 
-            <article className="text-sm text-neutral-500">
+            <article className="format text-sm text-gray-500 dark:text-gray-400">
               <p>
                 You can assign additional named accounts in your
                 ethlab.config.ts file.

@@ -1,5 +1,6 @@
 import { Navbar } from "flowbite-react";
 import EthLabWalletButton from "../internal/EthLabWalletButton";
+import EthLabThemeSelect from "../internal/EthLabThemeSelect";
 
 const Navigation = () => {
   return (
@@ -13,7 +14,10 @@ const Navigation = () => {
         <Navbar.Link>ScratchPad</Navbar.Link>
       </Navbar.Collapse>
 
-      <EthLabWalletButton />
+      <div className="flex gap-2">
+        <EthLabThemeSelect />
+        <EthLabWalletButton />
+      </div>
       <Navbar.Toggle />
     </Navbar>
   );

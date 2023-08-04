@@ -86,9 +86,9 @@ const EthLabScratchPad = () => {
   return (
     <>
       <div className="flex gap-4 justify-between mt-20 mb-4 items-center">
-        <div>
+        <div className="dark:text-white">
           <h3>ScratchPad</h3>
-          <span className="text-sm text-neutral-500">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             (javascript + ethers.js)
           </span>
         </div>
@@ -101,7 +101,7 @@ const EthLabScratchPad = () => {
         </div>
       </div>
       <Editor
-        className="rounded-lg h-72 font-mono overflow-hidden border-2 border-neutral-200"
+        className="rounded-lg h-72 font-mono overflow-hidden border-2 border-neutral-200 dark:border-gray-600"
         theme={theme}
         options={{
           extraEditorClassName: "font-mono",
@@ -127,7 +127,7 @@ const EthLabScratchPad = () => {
       />
 
       <div className="flex gap-4 justify-between my-4 items-center">
-        <h3>Output:</h3>
+        <h3 className="dark:text-white">Output:</h3>
         <div className="flex gap-4">
           <Button size="xs" color="gray" onClick={() => setOutput("")}>
             Clear
