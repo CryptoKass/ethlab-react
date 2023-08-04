@@ -9,9 +9,9 @@ const Navigation = () => {
         🧪 <small className="ml-2 block text-emerald-600">EthLab</small>
       </Navbar.Brand>
       <Navbar.Collapse>
-        <Navbar.Link>Contracts</Navbar.Link>
-        <Navbar.Link>Transactions</Navbar.Link>
-        <Navbar.Link>ScratchPad</Navbar.Link>
+        <Navbar.Link>🔍 Contracts</Navbar.Link>
+        <Navbar.Link>📒 Transactions</Navbar.Link>
+        <Navbar.Link>📝 ScratchPad</Navbar.Link>
       </Navbar.Collapse>
 
       <div className="flex gap-2">
