@@ -8,8 +8,6 @@ function App() {
 
   return (
     <div className="container mx-auto my-10 px-4">
-      <h1>Hello World</h1>
-      <EthLabWalletButton />
       <EthLabScratchPad />
     </div>
   );

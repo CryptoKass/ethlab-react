@@ -4,13 +4,17 @@ import App from "./App.tsx";
 import "./index.css";
 import { EthLabProvider } from "./internal/EthLabContext.tsx";
 import { JsonRpcProvider } from "ethers";
+import Navigation from "./components/Navigation.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <EthLabProvider
       initialProvider={new JsonRpcProvider("http://127.0.0.1:8545")}
     >
-      <App />
+      <div className="font-mono">
+        <Navigation />
+        <App />
+      </div>
     </EthLabProvider>
   </React.StrictMode>
 );
