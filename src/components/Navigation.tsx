@@ -1,17 +1,27 @@
 import { Navbar } from "flowbite-react";
 import EthLabWalletButton from "../internal/EthLabWalletButton";
 import EthLabThemeSelect from "../internal/EthLabThemeSelect";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <Navbar>
-      <Navbar.Brand href="/" className="text-2xl">
-        🧪 <small className="ml-2 block text-emerald-600">EthLab</small>
-      </Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand as="div" className="text-2xl font-bold">
+          🧪
+          <small className="ml-2 text-gray-900 dark:text-white">EthLab</small>
+        </Navbar.Brand>
+      </Link>
       <Navbar.Collapse>
-        <Navbar.Link>🔍 Contracts</Navbar.Link>
-        <Navbar.Link>📒 Transactions</Navbar.Link>
-        <Navbar.Link>📝 ScratchPad</Navbar.Link>
+        <Link to="/">
+          <Navbar.Link as="div">🔍 Contracts</Navbar.Link>
+        </Link>
+        <Link to="/">
+          <Navbar.Link as="div">📒 Transactions</Navbar.Link>
+        </Link>
+        <Link to="/scratchpad">
+          <Navbar.Link as="div">📝 ScratchPad</Navbar.Link>
+        </Link>
       </Navbar.Collapse>
 
       <div className="flex gap-2">

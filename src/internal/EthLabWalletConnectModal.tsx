@@ -1,4 +1,4 @@
-import { Button, Modal, Select, Spinner, TextInput } from "flowbite-react";
+import { Button as Btn, Modal, Spinner, TextInput } from "flowbite-react";
 import { useConnect } from "./EthLabContext";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
         )}
         {!loading && (
           <div className="flex flex-col gap-4">
-            <Button
+            <Btn
               color="gray"
               size="xl"
               className="text-left justify-start"
@@ -52,8 +52,8 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
               <div className="flex justify-center items-center text-xl">
                 Metamask
               </div>
-            </Button>
-            <Button
+            </Btn>
+            <Btn
               color="gray"
               size="xl"
               className="text-left justify-start"
@@ -67,35 +67,29 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
               <div className="flex justify-center items-center text-xl">
                 Burner Wallet
               </div>
-            </Button>
+            </Btn>
 
             <div className="flex gap-4 items-center">
               <hr className="w-full dark:border-gray-500" />
               <span className="dark:text-gray-400">Other</span>
               <hr className="w-full dark:border-gray-500" />
             </div>
-            <Button.Group>
+
+            <div className="flex font-mono">
               <TextInput
                 color="gray"
                 style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
                 className="w-full"
                 placeholder="Private Key"
+                value={""}
               />
-              <Button color="gray">Connect</Button>
-            </Button.Group>
-
-            <Button.Group>
-              <Select
+              <Btn
+                style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
                 color="gray"
-                className="w-full"
-                style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
-                placeholder="Select Named account"
               >
-                <option value="0x0">Alice</option>
-                <option value="0x1">Bob</option>
-              </Select>
-              <Button color="gray">Connect</Button>
-            </Button.Group>
+                Connect
+              </Btn>
+            </div>
 
             <article className="format text-sm text-gray-500 dark:text-gray-400">
               <p>

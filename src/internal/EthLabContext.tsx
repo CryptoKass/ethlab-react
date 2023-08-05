@@ -1,4 +1,5 @@
 import { JsonRpcProvider } from "ethers";
+import { Contract } from "ethers";
 import { Wallet } from "ethers";
 import { BrowserProvider, Provider, Signer } from "ethers";
 import {
@@ -13,18 +14,24 @@ interface EthLabContext {
   provider: Provider | null;
   signer: Signer | null;
   address: string;
+  contracts: Record<string, Contract> | Contract;
   setProvider: (provider: Provider) => void;
   setSigner: (signer: Signer) => void;
   setAddress: (address: string) => void;
+  setContracts: (contracts: Record<string, Contract>) => void;
+  addContract: (name: string, contract: Contract) => void;
 }
 
 export const EthLabContext = createContext<EthLabContext>({
   provider: null,
   signer: null,
   address: "",
+  contracts: {},
   setProvider: () => {},
   setSigner: () => {},
   setAddress: () => {},
+  setContracts: () => {},
+  addContract: () => {},
 });
 
 interface EthLabProviderProps extends PropsWithChildren<{}> {
@@ -38,10 +45,15 @@ export const EthLabProvider: React.FC<EthLabProviderProps> = ({
   const [provider, setProvider] = useState<Provider | null>(null);
   const [signer, setSigner] = useState<Signer | null>(null);
   const [address, setAddress] = useState<string>("");
+  const [contracts, setContracts] = useState<Record<string, Contract>>({});
 
   useEffect(() => {
     if (initialProvider) setProvider(initialProvider);
   }, [initialProvider]);
+
+  const addContract = (name: string, contract: Contract) => {
+    setContracts((contracts) => ({ ...contracts, [name]: contract }));
+  };
 
   return (
     <EthLabContext.Provider
@@ -49,9 +61,12 @@ export const EthLabProvider: React.FC<EthLabProviderProps> = ({
         provider,
         signer,
         address,
+        contracts,
         setProvider,
         setSigner,
         setAddress,
+        setContracts,
+        addContract,
       }}
     >
       {children}

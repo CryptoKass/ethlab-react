@@ -1,8 +1,8 @@
 import Editor, { Monaco } from "@monaco-editor/react";
 import { editor } from "monaco-editor/esm/vs/editor/editor.api";
 import { ethers } from "ethers";
-import { Button, Select, Textarea } from "flowbite-react";
-import { useEffect, useRef, useState } from "react";
+import { Button, Select } from "flowbite-react";
+import { useRef, useState } from "react";
 import { useProvider, useSigner } from "./hooks";
 
 const EthLabScratchPad = () => {

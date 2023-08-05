@@ -11,6 +11,7 @@ interface EthLabWalletModalProps {
 const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
   return (
     <Modal
+      className="font-mono"
       size="md"
       show={props.openModal === "dismissible"}
       onClose={() => props.setOpenModal(undefined)}
