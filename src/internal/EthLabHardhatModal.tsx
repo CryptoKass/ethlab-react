@@ -27,11 +27,19 @@ const EthLabHardhatModal: React.FC<EthLabWalletModalProps> = (props) => {
           <div className="space-y-2">
             <h4 className="text-lg">Actions</h4>
             <div className="flex flex-wrap gap-4">
-              <EthLabEvmButton provider={provider} method="hardhat_mine">
+              <EthLabEvmButton
+                provider={provider}
+                method="hardhat_mine"
+                message="EVM: Block mined!"
+              >
                 Mine Next Block
               </EthLabEvmButton>
 
-              <EthLabEvmButton provider={provider} method="hard_reset">
+              <EthLabEvmButton
+                provider={provider}
+                method="hard_reset"
+                message="EVM: Chain reset!"
+              >
                 Reset Chain
               </EthLabEvmButton>
             </div>

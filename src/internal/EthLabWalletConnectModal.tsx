@@ -1,6 +1,9 @@
 import { Button as Btn, Modal, Spinner, TextInput } from "flowbite-react";
 import { useConnect } from "./EthLabContext";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useSignerAddress } from "./hooks";
+import { shortAddress } from "./utils";
 
 interface EthLabWalletModalProps {
   openModal: string | undefined;
@@ -15,9 +18,11 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
     setLoading(true);
     try {
       await connectFn();
+      toast.success(`Success: Connected to Wallet`);
       props.setOpenModal(undefined);
     } catch (error) {
       console.error(error);
+      toast.error("Error: Failed to connect to wallet");
     }
     setLoading(false);
   };

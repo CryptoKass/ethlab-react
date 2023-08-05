@@ -5,6 +5,8 @@ import FlowbiteContext from "@/internal/FlowbiteContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { EthLabProvider } from "@/internal/EthLabContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Ethlab",
@@ -19,6 +21,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
           <EthLabProvider>
             <Navigation />
             <main className="min-h-[80vh]">{children}</main>
+            <ToastContainer position="bottom-right" />
           </EthLabProvider>
           <Footer />
         </FlowbiteContext>
