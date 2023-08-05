@@ -4,6 +4,7 @@ import { JsonRpcProvider } from "ethers";
 import { Button, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
 import EthLabEvmButton from "./EthLabEvmButton";
+import { EthLabSnapshot } from "./EthLabSnapshot";
 
 interface EthLabWalletModalProps {
   openModal: string | undefined;
@@ -42,6 +43,8 @@ const EthLabHardhatModal: React.FC<EthLabWalletModalProps> = (props) => {
               >
                 Reset Chain
               </EthLabEvmButton>
+
+              <EthLabSnapshot />
             </div>
           </div>
         </div>

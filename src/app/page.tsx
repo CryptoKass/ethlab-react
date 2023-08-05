@@ -1,3 +1,4 @@
+import { EthLabSnapshot } from "@/internal/EthLabSnapshot";
 import Image from "next/image";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
           EthLab is a playground for Ethereum developers. It is a place to
           experiment with smart contracts, transactions, and more.
         </p>
+        <EthLabSnapshot />
       </article>
     </div>
   );

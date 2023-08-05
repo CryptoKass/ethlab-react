@@ -9,6 +9,8 @@ interface EthLabEvmButtonProps {
   args?: any[];
   message?: string;
   children?: React.ReactNode;
+  color?: string;
+  callback?: (a: any) => void;
 }
 
 const EthLabEvmButton: React.FC<EthLabEvmButtonProps> = (props) => {
@@ -17,6 +19,7 @@ const EthLabEvmButton: React.FC<EthLabEvmButtonProps> = (props) => {
   const onSuccess = (res: any) => {
     console.log(res);
     toast.success(props.message || `Success: '${props.method}()' called`);
+    if (props.callback != undefined) props.callback(res);
   };
 
   const onError = (err: any) => {
@@ -35,7 +38,10 @@ const EthLabEvmButton: React.FC<EthLabEvmButtonProps> = (props) => {
   };
 
   return (
-    <Button onClick={() => evmRequest(props.method, props.args)} color="gray">
+    <Button
+      onClick={() => evmRequest(props.method, props.args)}
+      color={props.color || "gray"}
+    >
       {props.children}
     </Button>
   );
