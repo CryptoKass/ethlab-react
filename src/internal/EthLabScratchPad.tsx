@@ -1,3 +1,5 @@
+"use client";
+
 import Editor, { Monaco } from "@monaco-editor/react";
 import { editor } from "monaco-editor/esm/vs/editor/editor.api";
 import { ethers } from "ethers";

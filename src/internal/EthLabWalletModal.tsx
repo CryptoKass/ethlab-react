@@ -37,9 +37,9 @@ const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
 
           <div className="space-y-2">
             <h4 className="text-lg">Send Eth</h4>
-            <div className="flex gap-4">
-              <TextInput placeholder="Address" />
-              <TextInput placeholder="Amount" />
+            <div className="flex flex-wrap gap-4 w-full">
+              <TextInput size={15} placeholder="Address" />
+              <TextInput size={8} placeholder="Amount" />
               <Button color="gray">Send</Button>
             </div>
           </div>

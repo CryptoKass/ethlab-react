@@ -1,4 +1,6 @@
-const Home = () => {
+import Image from "next/image";
+
+export default function Home() {
   return (
     <div className="container mx-auto my-10 px-4">
       <article className="format mx-auto text-center">
@@ -15,6 +17,4 @@ const Home = () => {
       </article>
     </div>
   );
-};
-
-export default Home;
+}

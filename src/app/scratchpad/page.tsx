@@ -1,4 +1,5 @@
-import EthLabScratchPad from "../internal/EthLabScratchPad";
+"use client";
+import EthLabScratchPad from "@/internal/EthLabScratchPad";
 
 const ScratchPad = () => {
   return (

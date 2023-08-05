@@ -1,3 +1,5 @@
+"use client";
+
 import { JsonRpcProvider } from "ethers";
 import { Contract } from "ethers";
 import { Wallet } from "ethers";
