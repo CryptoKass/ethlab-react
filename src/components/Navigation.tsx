@@ -16,7 +16,7 @@ const Navigation = () => {
         </Navbar.Brand>
       </Link>
       <Navbar.Collapse>
-        <Link href="/">
+        <Link href="/contracts">
           <Navbar.Link as="div">🔍 Contracts</Navbar.Link>
         </Link>
         <Link href="/transactions">

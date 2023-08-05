@@ -7,3 +7,9 @@ export interface TransactionSnippet {
   to: string | null;
   value: string;
 }
+
+export interface ContractInfo {
+  name: string;
+  address: string;
+  abi: any;
+}
