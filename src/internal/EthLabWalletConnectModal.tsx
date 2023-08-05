@@ -6,8 +6,8 @@ import { useSignerAddress } from "./hooks";
 import { shortAddress } from "./utils";
 
 interface EthLabWalletModalProps {
-  openModal: string | undefined;
-  setOpenModal: (openModal: string | undefined) => void;
+  openModal: boolean;
+  setOpenModal: (openModal: boolean) => void;
 }
 
 const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
@@ -19,7 +19,7 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
     try {
       await connectFn();
       toast.success(`Success: Connected to Wallet`);
-      props.setOpenModal(undefined);
+      props.setOpenModal(false);
     } catch (error) {
       console.error(error);
       toast.error("Error: Failed to connect to wallet");
@@ -29,9 +29,10 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
 
   return (
     <Modal
+      dismissible
       size={"sm"}
-      show={props.openModal === "dismissible"}
-      onClose={() => props.setOpenModal(undefined)}
+      show={props.openModal}
+      onClose={() => props.setOpenModal(false)}
     >
       <Modal.Header>Connect Wallet</Modal.Header>
 

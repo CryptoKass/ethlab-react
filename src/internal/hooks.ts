@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { EthLabContext } from "./EthLabContext";
-import { Contract } from "ethers";
+import { Contract, Provider } from "ethers";
 
 /** Returns the provider if it exists, otherwise returns null */
 export const useProvider = () => {
@@ -30,13 +30,15 @@ export const useBalance = (address: string, refresh = true) => {
   const { provider } = useContext(EthLabContext);
 
   const setBalanceFromProvider = async () => {
-    if (!provider || address == null) return;
+    if (!provider || !address) return;
     const newBalance = await provider.getBalance(address);
+    console.log("address", address.toString());
     if (newBalance !== balance) setBalance(newBalance);
   };
 
   useEffect(() => {
     if (!provider) return;
+    if (address == null) return;
     // set initial balance
     provider.getBalance(address).then(setBalance).catch(console.error);
 

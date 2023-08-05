@@ -4,17 +4,18 @@ import { Button, Modal, TextInput } from "flowbite-react";
 interface EthLabWalletModalProps {
   address: string;
   balance: BigInt;
-  openModal: string | undefined;
-  setOpenModal: (openModal: string | undefined) => void;
+  openModal: boolean;
+  setOpenModal: (openModal: boolean) => void;
 }
 
 const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
   return (
     <Modal
+      dismissible
       className="font-mono"
       size="md"
-      show={props.openModal === "dismissible"}
-      onClose={() => props.setOpenModal(undefined)}
+      show={props.openModal}
+      onClose={() => props.setOpenModal(false)}
     >
       <Modal.Header>My Wallet</Modal.Header>
 

@@ -1,10 +1,10 @@
 "use client";
 
 import { JsonRpcProvider } from "ethers";
-import { Button, Modal, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { Modal } from "flowbite-react";
 import EthLabEvmButton from "./EthLabEvmButton";
 import { EthLabSnapshot } from "./EthLabSnapshot";
+import { useState } from "react";
 
 interface EthLabWalletModalProps {
   openModal: string | undefined;
@@ -12,7 +12,9 @@ interface EthLabWalletModalProps {
 }
 
 const EthLabHardhatModal: React.FC<EthLabWalletModalProps> = (props) => {
-  const provider = new JsonRpcProvider("http://127.0.0.1:8545");
+  const [provider] = useState<JsonRpcProvider>(
+    new JsonRpcProvider("http://127.0.0.1:8545")
+  );
 
   return (
     <Modal

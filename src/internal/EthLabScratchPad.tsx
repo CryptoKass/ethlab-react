@@ -1,7 +1,7 @@
 "use client";
 
 import Editor, { Monaco } from "@monaco-editor/react";
-import { editor } from "monaco-editor/esm/vs/editor/editor.api";
+import type { editor } from "monaco-editor/esm/vs/editor/editor.api";
 import { ethers } from "ethers";
 import { Button, Select } from "flowbite-react";
 import { useRef, useState } from "react";
