@@ -2,6 +2,7 @@
 
 import { ContractInfo } from "@/internal/types";
 import { Spinner, Table } from "flowbite-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ContractsPage = () => {
@@ -44,8 +45,22 @@ const ContractsPage = () => {
         <Table.Body>
           {contracts.map((contract) => (
             <Table.Row key={contract.name}>
-              <Table.Cell>{contract.name}</Table.Cell>
-              <Table.Cell>{contract.address}</Table.Cell>
+              <Table.Cell>
+                <Link
+                  className="w-full"
+                  href={`/contracts/${contract.address}`}
+                >
+                  {contract.name}
+                </Link>
+              </Table.Cell>
+              <Table.Cell>
+                <Link
+                  className="w-full"
+                  href={`/contracts/${contract.address}`}
+                >
+                  {contract.address}
+                </Link>
+              </Table.Cell>
             </Table.Row>
           ))}
           {loading && (

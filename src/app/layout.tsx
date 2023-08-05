@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { EthLabProvider } from "@/internal/EthLabContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { JsonRpcProvider, Provider } from "ethers";
 
 export const metadata: Metadata = {
   title: "Ethlab",
@@ -18,7 +19,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
     <html lang="en">
       <body className="bg-white dark:bg-gray-800 min-h-screen font-mono text-gray-950 dark:text-white">
         <FlowbiteContext>
-          <EthLabProvider>
+          <EthLabProvider initialRPC="http://127.0.0.1:8545">
             <Navigation />
             <main className="min-h-[80vh]">{children}</main>
             <ToastContainer position="bottom-right" />

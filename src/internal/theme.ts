@@ -15,7 +15,7 @@ export const ethlabTheme: CustomFlowbiteTheme = {
   textInput: {
     field: {
       input: {
-        base: "!rounded outline-none border border-gray-300 dark:border-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+        base: "!rounded outline-none border border-gray-300 dark:border-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full",
       },
     },
   },

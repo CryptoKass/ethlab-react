@@ -37,12 +37,12 @@ export const EthLabContext = createContext<EthLabContext>({
 });
 
 interface EthLabProviderProps extends PropsWithChildren<{}> {
-  initialProvider?: Provider;
+  initialRPC?: string;
 }
 
 export const EthLabProvider: React.FC<EthLabProviderProps> = ({
   children,
-  initialProvider,
+  initialRPC,
 }) => {
   const [provider, setProvider] = useState<Provider | null>(null);
   const [signer, setSigner] = useState<Signer | null>(null);
@@ -50,8 +50,8 @@ export const EthLabProvider: React.FC<EthLabProviderProps> = ({
   const [contracts, setContracts] = useState<Record<string, Contract>>({});
 
   useEffect(() => {
-    if (initialProvider) setProvider(initialProvider);
-  }, [initialProvider]);
+    if (initialRPC) setProvider(new JsonRpcProvider(initialRPC));
+  }, [initialRPC]);
 
   const addContract = (name: string, contract: Contract) => {
     setContracts((contracts) => ({ ...contracts, [name]: contract }));
