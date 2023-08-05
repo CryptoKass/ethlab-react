@@ -4,14 +4,17 @@ import { Navbar } from "flowbite-react";
 import EthLabWalletButton from "@/internal/EthLabWalletButton";
 import EthLabThemeSelect from "@/internal/EthLabThemeSelect";
 import Link from "next/link";
+import EthLabHardhatButton from "@/internal/EthLabHardhatButton";
 
 const Navigation = () => {
   return (
     <Navbar>
-      <Navbar.Brand as="div" className="text-2xl font-bold">
-        🧪
-        <small className="ml-2 text-gray-900 dark:text-white">EthLab</small>
-      </Navbar.Brand>
+      <Link href="/">
+        <Navbar.Brand as="div" className="text-2xl font-bold">
+          🧪
+          <small className="ml-2 text-gray-900 dark:text-white">EthLab</small>
+        </Navbar.Brand>
+      </Link>
       <Navbar.Collapse>
         <Link href="/">
           <Navbar.Link as="div">🔍 Contracts</Navbar.Link>
@@ -25,6 +28,7 @@ const Navigation = () => {
       </Navbar.Collapse>
 
       <div className="flex gap-2">
+        <EthLabHardhatButton />
         <EthLabThemeSelect />
         <EthLabWalletButton />
       </div>
