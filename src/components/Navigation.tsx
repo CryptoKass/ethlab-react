@@ -19,9 +19,6 @@ const Navigation = () => {
         <Link to="/contracts">
           <Navbar.Link as="div">🔍 Contracts</Navbar.Link>
         </Link>
-        <Link to="/transactions">
-          <Navbar.Link as="div">📒 Transactions</Navbar.Link>
-        </Link>
         <Link to="/scratchpad">
           <Navbar.Link as="div">📝 ScratchPad</Navbar.Link>
         </Link>
