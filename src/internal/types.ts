@@ -1,5 +1,3 @@
-import { TransactionResponse, TransactionReceipt } from "ethers";
-
 export interface TransactionSnippet {
   hash: string;
   block: number;

@@ -2,8 +2,6 @@ import { Button as Btn, Modal, Spinner, TextInput } from "flowbite-react";
 import { useConnect } from "./EthLabContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useSignerAddress } from "./hooks";
-import { shortAddress } from "./utils";
 
 interface EthLabWalletModalProps {
   openModal: boolean;

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { EthLabContext } from "./EthLabContext";
-import { Contract, Provider } from "ethers";
+import { Contract } from "ethers";
 
 /** Returns the provider if it exists, otherwise returns null */
 export const useProvider = () => {

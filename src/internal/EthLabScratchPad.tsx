@@ -23,7 +23,7 @@ const EthLabScratchPad = () => {
   const terminalRef = useRef(null);
 
   const handleEditorDidMount = async (
-    editor: editor.IStandaloneCodeEditor,
+    _: editor.IStandaloneCodeEditor,
     monaco: Monaco
   ) => {
     // add ethers.js typings

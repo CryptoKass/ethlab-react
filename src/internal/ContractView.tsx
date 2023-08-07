@@ -1,6 +1,6 @@
 import { Contract } from "ethers";
 import ContractMethod from "./ContractMethod";
-import { Button, Card } from "flowbite-react";
+import { Button } from "flowbite-react";
 import ButtonGroup from "flowbite-react/lib/esm/components/Button/ButtonGroup";
 import { useState } from "react";
 import ContractOptions from "./ContractOptions";

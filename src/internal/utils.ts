@@ -1,4 +1,4 @@
-import { Contract, Interface, ethers } from "ethers";
+import { Contract, Interface } from "ethers";
 
 export const shortAddress = (address?: string | null) => {
   if (address == null) return "";
