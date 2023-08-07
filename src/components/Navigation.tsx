@@ -1,11 +1,8 @@
 "use client";
 
-import { Button, Navbar } from "flowbite-react";
+import { Navbar } from "flowbite-react";
 import EthLabWalletButton from "@/internal/EthLabWalletButton";
-import EthLabThemeSelect from "@/internal/EthLabThemeSelect";
 import { Link } from "react-router-dom";
-import { ReactComponent as FileShieldSVG } from "@/assets/file-shield.svg";
-import { ReactComponent as FileCodeSVG } from "@/assets/file-code.svg";
 
 const Navigation = () => {
   return (
