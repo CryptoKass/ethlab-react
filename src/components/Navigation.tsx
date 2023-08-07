@@ -6,11 +6,17 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar>
+    <Navbar border fluid className="bg-gray-100 dark:bg-gray-900">
       <Link to="/">
-        <Navbar.Brand as="div" className="text-2xl font-bold">
+        <Navbar.Brand
+          as="div"
+          className="text-2xl text-gray-900 dark:text-white"
+        >
           🧪
-          <small className="ml-2 text-gray-900 dark:text-white">EthLab</small>
+          <div>
+            <div className="ml-2 font-bold ">EthLab</div>
+            <div className="text-xs">Developer Workspace</div>
+          </div>
         </Navbar.Brand>
       </Link>
 
