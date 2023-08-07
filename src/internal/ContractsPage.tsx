@@ -4,6 +4,7 @@ import { ContractInfo } from "@/internal/types";
 import { Spinner, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Avvvatars from "avvvatars-react";
 
 const ContractsPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,20 +41,33 @@ const ContractsPage = () => {
       <div className="my-10 max-w-2xl mx-auto">
         <Table>
           <Table.Head>
+            <Table.HeadCell></Table.HeadCell>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Address</Table.HeadCell>
           </Table.Head>
           <Table.Body>
             {contracts.map((contract) => (
-              <Table.Row key={contract.name}>
+              <Table.Row key={contract.name} className="hover:text-black">
+                <Table.Cell>
+                  <Link to={`/contracts/${contract.address}`}>
+                    <Avvvatars
+                      value={contract.address}
+                      style="shape"
+                      size={24}
+                      radius={4}
+                    />
+                  </Link>
+                </Table.Cell>
+
                 <Table.Cell>
                   <Link
-                    className="w-full"
+                    className="w-full "
                     to={`/contracts/${contract.address}`}
                   >
                     {contract.name}
                   </Link>
                 </Table.Cell>
+
                 <Table.Cell>
                   <Link
                     className="w-full"
