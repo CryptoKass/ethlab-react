@@ -93,6 +93,7 @@ export const useConnect = () => {
       } else throw new Error("Metamask not found");
     },
     connectBurner: async (
+      // VITE_RPC_URL: defined inside the .env file
       rpc = import.meta.env.VITE_RPC_URL || "http://127.0.0.1:8545"
     ) => {
       const provider = new JsonRpcProvider(rpc);

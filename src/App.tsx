@@ -10,13 +10,15 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
-        // ethlab development routes
-        // /contracts, /transactions, /scratchpad, etc.
+        // load EthLab development routes:
+        //  → /contracts
+        //  → /transactions
+        //  → /scratchpad etc.
         ...routes.dev,
 
+        // → add your custom pages here:
         { path: "/", element: <HomePage /> },
         { path: "*", element: <NotFoundPage /> },
-        // add your custom pages here:
       ],
     },
   ]);
