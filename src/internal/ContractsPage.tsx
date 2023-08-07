@@ -47,13 +47,16 @@ const ContractsPage = () => {
           </Table.Head>
           <Table.Body>
             {contracts.map((contract) => (
-              <Table.Row key={contract.name} className="hover:text-black">
+              <Table.Row
+                key={contract.name}
+                className="hover:text-black dark:hover:text-white"
+              >
                 <Table.Cell>
                   <Link to={`/contracts/${contract.address}`}>
                     <Avvvatars
                       value={contract.address}
                       style="shape"
-                      size={24}
+                      size={32}
                       radius={4}
                     />
                   </Link>
