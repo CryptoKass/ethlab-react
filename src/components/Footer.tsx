@@ -1,10 +1,16 @@
 "use client";
-import EthLabFloatingBlockNumber from "@/internal/EthLabFloatingBlockNumber";
+import EthLabBlockNumber from "@/internal/EthLabBlockNumber";
+import EthLabHardhatButton from "@/internal/EthLabHardhatButton";
 import { ToastContainer } from "react-toastify";
+
+const RPC_MODE = import.meta.env.VITE_RPC_MODE || "default";
 
 const Footer = () => (
   <>
-    <EthLabFloatingBlockNumber />
+    <div className="fixed bottom-0 flex justify-between items-end px-4 p-4 w-full">
+      <div>{RPC_MODE == "hardhat" && <EthLabHardhatButton />}</div>
+      <EthLabBlockNumber />
+    </div>
     <ToastContainer position="bottom-right" />
     <footer className="text-center">
       <small className="block text-center">

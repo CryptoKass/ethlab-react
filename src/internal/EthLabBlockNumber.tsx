@@ -1,9 +1,9 @@
 import { useBlockNumber } from "./hooks";
 
-const EthLabFloatingBlockNumber = () => {
+const EthLabBlockNumber = () => {
   const num = useBlockNumber();
   return (
-    <div className="fixed bottom-0 right-0 p-3 px-4 text-xs opacity-75 hover:opacity-100">
+    <div className="text-xs opacity-75 hover:opacity-100">
       {num && (
         <div className="text-emerald-600 dark:text-emerald-300 flex gap-1 items-center">
           {num}
@@ -20,4 +20,4 @@ const EthLabFloatingBlockNumber = () => {
   );
 };
 
-export default EthLabFloatingBlockNumber;
+export default EthLabBlockNumber;
