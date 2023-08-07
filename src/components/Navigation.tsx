@@ -13,7 +13,7 @@ const Navigation = () => {
           className="text-2xl text-gray-900 dark:text-white"
         >
           🧪
-          <div>
+          <div className="hidden md:block">
             <div className="ml-2 font-bold ">EthLab</div>
             <div className="text-xs">Developer Workspace</div>
           </div>

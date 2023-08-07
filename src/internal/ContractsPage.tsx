@@ -5,6 +5,7 @@ import { Spinner, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Avvvatars from "avvvatars-react";
+import { ReactComponent as FileShieldSVG } from "@/assets/file-shield.svg";
 
 const ContractsPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,16 +31,20 @@ const ContractsPage = () => {
   }, []);
 
   return (
-    <div className="container mx-auto my-10 px-4">
-      <article className="format dark:text-white mx-auto">
-        <h1 className="dark:text-white">Contracts</h1>
-        <p>
-          This page lists all of the contracts that are deployed to the
-          development network.
+    <div className="container mx-auto my-20 px-4">
+      <article className="format dark:text-white mx-auto mb-8">
+        <h5 className="dark:text-white text-black flex items-baseline">
+          <FileShieldSVG className="w-5 h-5 mr-2 inline" />
+          <span className="uppercase">Contracts</span>
+        </h5>
+        <p className="text-sm">
+          This page lists all of the contracts that are registered in the
+          `public/contracts.json` file. Click on a contract to interact.
         </p>
       </article>
+      <hr />
       <div className="my-10 max-w-2xl mx-auto">
-        <Table>
+        <Table className="text-md">
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
             <Table.HeadCell>Name</Table.HeadCell>

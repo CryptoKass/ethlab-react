@@ -11,7 +11,7 @@ const ContractPage = () => {
   const signer = useSigner();
   const provider = useProvider();
   const [contract, setContract] = useState<Contract | null>(null);
-  const [name, setName] = useState<string>("Contract");
+  const [name, setName] = useState<string>("Unknown");
   const balance = useBalance(address || "0x0");
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ContractPage = () => {
   }, [address, signer, provider]);
 
   return (
-    <div className="container mx-auto my-10 px-4">
+    <div className="container mx-auto my-20 px-4">
       <article className="format dark:text-white mx-auto mb-8">
         <h3 className="dark:text-white">Contract: {name}</h3>
         <TextInput className="my-4" value={address} readOnly />

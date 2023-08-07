@@ -103,7 +103,7 @@ const EthLabScratchPad = () => {
         </div>
       </div>
       <Editor
-        className="rounded-lg h-72 font-mono overflow-hidden border-2 border-neutral-200 dark:border-gray-600"
+        className="rounded h-72 font-mono overflow-hidden border-2 border-neutral-200 dark:border-gray-600"
         theme={theme}
         options={{
           extraEditorClassName: "font-mono",
@@ -137,13 +137,13 @@ const EthLabScratchPad = () => {
         </div>
       </div>
 
-      <div className="font-mono text-green-700 block h-32 relative p-4 w-full text-sm rounded-lg border-2 dark:bg-black dark:border-gray-600  dark:text-white">
+      <div className="font-mono text-green-700 block h-32 relative p-4 w-full text-sm rounded border-2 dark:bg-black dark:border-gray-600 dark:text-emerald-200">
         <div
           className="h-full overflow-y-scroll whitespace-pre"
           ref={terminalRef}
           id="terminal"
         >
-          {output}
+          {output || "No scratchPad console output."}
         </div>
       </div>
     </>
