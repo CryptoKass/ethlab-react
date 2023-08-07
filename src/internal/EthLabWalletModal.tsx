@@ -1,3 +1,4 @@
+"use client";
 import { formatEther } from "ethers";
 import { Button, Modal, TextInput } from "flowbite-react";
 

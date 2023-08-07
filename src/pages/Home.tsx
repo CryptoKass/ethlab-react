@@ -1,7 +1,4 @@
-import { EthLabSnapshot } from "@/internal/EthLabSnapshot";
-import Image from "next/image";
-
-export default function Home() {
+const HomePage = () => {
   return (
     <div className="container mx-auto my-10 px-4">
       <article className="format mx-auto text-center">
@@ -15,8 +12,10 @@ export default function Home() {
           EthLab is a playground for Ethereum developers. It is a place to
           experiment with smart contracts, transactions, and more.
         </p>
-        <EthLabSnapshot />
+        <span>CONFIG:</span>
       </article>
     </div>
   );
-}
+};
+
+export default HomePage;

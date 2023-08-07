@@ -3,7 +3,7 @@
 import { JsonRpcProvider } from "ethers";
 import { Contract } from "ethers";
 import { Wallet } from "ethers";
-import { BrowserProvider, Provider, Signer } from "ethers";
+import { BrowserProvider, type Provider, type Signer } from "ethers";
 import {
   PropsWithChildren,
   createContext,
@@ -92,7 +92,9 @@ export const useConnect = () => {
         return signer;
       } else throw new Error("Metamask not found");
     },
-    connectBurner: async (rpc = "http://127.0.0.1:8545") => {
+    connectBurner: async (
+      rpc = import.meta.env.VITE_RPC_URL || "http://127.0.0.1:8545"
+    ) => {
       const provider = new JsonRpcProvider(rpc);
       const wallet = Wallet.createRandom();
       const signer: Signer = wallet.connect(provider);
