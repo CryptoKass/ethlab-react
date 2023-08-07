@@ -1,8 +1,10 @@
 "use client";
+import EthLabFloatingBlockNumber from "@/internal/EthLabFloatingBlockNumber";
 import { ToastContainer } from "react-toastify";
 
 const Footer = () => (
   <>
+    <EthLabFloatingBlockNumber />
     <ToastContainer position="bottom-right" />
     <footer className="text-center">
       <small className="block text-center">
