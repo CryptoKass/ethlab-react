@@ -54,24 +54,28 @@ const ContractView: React.FC<ContractViewProps> = (props) => {
         </ButtonGroup>
         <ContractOptions contract={props.contract} name={props.name} />
       </div>
-      <div className="space-y-10">
-        {readMethods.map((method: any, i: number) => (
-          <ContractMethod
-            key={i}
-            contract={props.contract}
-            method={method.name}
-          />
-        ))}
-      </div>
-      <div className="space-y-10">
-        {writeMethods.map((method: any, i: number) => (
-          <ContractMethod
-            key={i}
-            contract={props.contract}
-            method={method.name}
-          />
-        ))}
-      </div>
+      {view === "read" && (
+        <div className="space-y-10">
+          {readMethods.map((method: any, i: number) => (
+            <ContractMethod
+              key={i}
+              contract={props.contract}
+              method={method.name}
+            />
+          ))}
+        </div>
+      )}
+      {view === "write" && (
+        <div className="space-y-10">
+          {writeMethods.map((method: any, i: number) => (
+            <ContractMethod
+              key={i}
+              contract={props.contract}
+              method={method.name}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
