@@ -67,7 +67,7 @@ const ContractsPage = () => {
                   </Link>
                 </Table.Cell>
 
-                <Table.Cell>
+                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   <Link
                     className="w-full "
                     to={`/contracts/${contract.address}`}
