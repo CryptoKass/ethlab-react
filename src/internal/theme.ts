@@ -19,4 +19,45 @@ export const ethlabTheme: CustomFlowbiteTheme = {
       },
     },
   },
+
+  select: {
+    field: {
+      select: {
+        base: "!rounded",
+      },
+    },
+  },
+
+  navbar: {
+    link: {
+      base: "hover:underline md:hover:!text-black uppercase",
+      active: {
+        on: "text-black underline",
+      },
+    },
+  },
+
+  modal: {
+    content: {
+      base: "rounded relative bg-white shadow dark:bg-gray-700 flex flex-col max-h-[90vh]",
+    },
+  },
+
+  table: {
+    root: {
+      shadow:
+        "absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded -z-10 text-md",
+    },
+    head: {
+      cell: {
+        base: "group-first/head:first:rounded-tl-md group-first/head:last:rounded-tr-md bg-gray-100 dark:bg-gray-700 px-6 py-3",
+      },
+    },
+    body: {
+      base: "group/row divide-y",
+    },
+    row: {
+      base: "group/row bg-white dark:border-gray-700 dark:bg-gray-800",
+    },
+  },
 };
