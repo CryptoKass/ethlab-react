@@ -4,7 +4,7 @@ import { TransactionDetails } from "./types";
 import { useProvider } from "./hooks";
 import { useParams } from "react-router-dom";
 import EthLabPage from "./EthLabPage";
-import EthLabTransaction from "./EthLabTransaction";
+import EthLabTransactionTable from "./EthLabTransactionTable";
 import { Spinner } from "flowbite-react";
 import { ReactComponent as ReceiptSVG } from "@/assets/receipt.svg";
 
@@ -31,7 +31,7 @@ const TransactionPage = () => {
         </h5>
       </article>
       <div className="mx-auto max-w-3xl">
-        {details && <EthLabTransaction details={details} />}
+        {details && <EthLabTransactionTable details={details} />}
         {!details && <Spinner className="mx-auto" />}
       </div>
     </EthLabPage>

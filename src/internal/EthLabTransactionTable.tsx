@@ -4,11 +4,13 @@ import { formatEther } from "ethers";
 import EthLabTransactionAction from "./EthLabTransactionAction";
 import { Link } from "react-router-dom";
 
-interface EthLabTransactionProps {
+interface EthLabTransactionTableProps {
   details: TransactionDetails;
 }
 
-const EthLabTransaction: React.FC<EthLabTransactionProps> = ({ details }) => {
+const EthLabTransactionTable: React.FC<EthLabTransactionTableProps> = ({
+  details,
+}) => {
   return (
     <Table>
       <Table.Body>
@@ -16,10 +18,12 @@ const EthLabTransaction: React.FC<EthLabTransactionProps> = ({ details }) => {
           <Table.HeadCell>Hash</Table.HeadCell>
           <Table.Cell>{details.hash}</Table.Cell>
         </Table.Row>
+
         <Table.Row>
           <Table.HeadCell>Block Number</Table.HeadCell>
           <Table.Cell>{details.block}</Table.Cell>
         </Table.Row>
+
         <Table.Row>
           <Table.HeadCell>Timestamp</Table.HeadCell>
           <Table.Cell>{details.timestamp}</Table.Cell>
@@ -62,7 +66,9 @@ const EthLabTransaction: React.FC<EthLabTransactionProps> = ({ details }) => {
 
         <Table.Row>
           <Table.HeadCell>Value</Table.HeadCell>
-          <Table.Cell>{formatEther(details.value)}</Table.Cell>
+          <Table.Cell>
+            {formatEther(details.value)} <small>ETH</small>
+          </Table.Cell>
         </Table.Row>
 
         <Table.Row>
@@ -91,4 +97,4 @@ const EthLabTransaction: React.FC<EthLabTransactionProps> = ({ details }) => {
   );
 };
 
-export default EthLabTransaction;
+export default EthLabTransactionTable;
