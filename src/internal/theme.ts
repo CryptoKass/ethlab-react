@@ -1,4 +1,5 @@
 import { CustomFlowbiteTheme } from "flowbite-react";
+import type { editor } from "monaco-editor/esm/vs/editor/editor.api";
 
 export const ethlabTheme: CustomFlowbiteTheme = {
   button: {
@@ -69,5 +70,14 @@ export const ethlabTheme: CustomFlowbiteTheme = {
     row: {
       base: "group/row bg-white dark:border-gray-700 dark:bg-gray-800",
     },
+  },
+};
+
+export const ethlabMonacoTheme: editor.IStandaloneThemeData = {
+  base: "vs-dark",
+  inherit: true,
+  rules: [],
+  colors: {
+    "editor.background": "#1f2937",
   },
 };
