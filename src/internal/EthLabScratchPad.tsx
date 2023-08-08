@@ -114,33 +114,31 @@ const EthLabScratchPad = () => {
           <Button onClick={run}>Run</Button>
         </div>
       </div>
-      <div className="rounded-xl overflow-hidden">
-        <Editor
-          className="rounded h-72 font-mono overflow-hidden border-2 border-neutral-200 dark:border-gray-600"
-          theme={theme}
-          options={{
-            extraEditorClassName: "font-mono",
-            fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
-            fontSize: 14,
-            minimap: { enabled: false },
-            automaticLayout: true,
-            scrollbar: { vertical: "hidden" },
-            padding: { top: 24, bottom: 24 },
-          }}
-          defaultLanguage="javascript"
-          defaultValue={
-            "// globally available:\n" +
-            "//  [ethers: ethers, " +
-            "provider: ethers.Provider, " +
-            "signer: ethers.Signer, await]\n\n" +
-            'const bal = await provider.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266")\n' +
-            'console.log("Balance", ethers.formatEther(bal));\n'
-          }
-          value={code}
-          onChange={(value) => setCode(value || "")}
-          onMount={(e, m) => handleEditorDidMount(e, m)}
-        />
-      </div>
+      <Editor
+        className="rounded-lg h-72 font-mono overflow-hidden border-2 border-neutral-200 dark:border-gray-600"
+        theme={theme}
+        options={{
+          extraEditorClassName: "font-mono",
+          fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
+          fontSize: 14,
+          minimap: { enabled: false },
+          automaticLayout: true,
+          scrollbar: { vertical: "hidden" },
+          padding: { top: 24, bottom: 24 },
+        }}
+        defaultLanguage="javascript"
+        defaultValue={
+          "// globally available:\n" +
+          "//  [ethers: ethers, " +
+          "provider: ethers.Provider, " +
+          "signer: ethers.Signer, await]\n\n" +
+          'const bal = await provider.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266")\n' +
+          'console.log("Balance", ethers.formatEther(bal));\n'
+        }
+        value={code}
+        onChange={(value) => setCode(value || "")}
+        onMount={(e, m) => handleEditorDidMount(e, m)}
+      />
 
       <div className="flex gap-4 justify-between my-4 items-center">
         <h3 className="dark:text-white">Output:</h3>
