@@ -10,6 +10,7 @@ interface EthLabEvmButtonProps {
   message?: string;
   children?: React.ReactNode;
   color?: string;
+  className?: string;
   callback?: (a: any) => void;
 }
 
@@ -41,6 +42,7 @@ const EthLabEvmButton: React.FC<EthLabEvmButtonProps> = (props) => {
     <Button
       onClick={() => evmRequest(props.method, props.args)}
       color={props.color || "gray"}
+      className={props.className}
     >
       {props.children}
     </Button>
