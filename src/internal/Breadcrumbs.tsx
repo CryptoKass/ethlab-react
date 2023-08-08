@@ -19,7 +19,7 @@ const Breadcrumbs = () => {
     <>
       <Breadcrumb className="opacity-75 hover:opacity-100">
         {crumbs.map((crumb, i) => (
-          <Breadcrumb.Item>
+          <Breadcrumb.Item key={`bread_${i}`}>
             <Link to={`${i > 0 ? links[i] : "/"}`}>{crumb}</Link>
           </Breadcrumb.Item>
         ))}
