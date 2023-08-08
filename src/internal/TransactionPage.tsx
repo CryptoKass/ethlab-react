@@ -7,7 +7,6 @@ import EthLabPage from "./EthLabPage";
 import EthLabTransaction from "./EthLabTransaction";
 import { Spinner } from "flowbite-react";
 import { ReactComponent as ReceiptSVG } from "@/assets/receipt.svg";
-import { shortAddress } from "./utils";
 
 const TransactionPage = () => {
   const { address } = useParams<{ address: string }>();
