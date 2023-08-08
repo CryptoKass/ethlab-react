@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { JsonRpcProvider } from "ethers";
-import { Button } from "flowbite-react";
+import { Button, Spinner } from "flowbite-react";
 import { toast } from "react-toastify";
 
 interface EthLabEvmButtonProps {
@@ -43,8 +43,10 @@ const EthLabEvmButton: React.FC<EthLabEvmButtonProps> = (props) => {
       onClick={() => evmRequest(props.method, props.args)}
       color={props.color || "gray"}
       className={props.className}
+      disabled={loading}
     >
-      {props.children}
+      <span>{props.children}</span>
+      {loading && <Spinner className="ml-2" />}
     </Button>
   );
 };

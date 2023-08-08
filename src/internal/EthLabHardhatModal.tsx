@@ -36,7 +36,7 @@ const EthLabHardhatModal: React.FC<EthLabWalletModalProps> = (props) => {
             <h4 className="text-lg">EVM</h4>
             <div className="flex flex-wrap gap-4"></div>
           </div>
-          <div className="space-y-2 pb-0">
+          <div className="space-y-2">
             <h4 className="text-lg">Other Actions</h4>
             <div className="flex flex-wrap gap-4">
               <EthLabEvmButton
