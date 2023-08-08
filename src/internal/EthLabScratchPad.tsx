@@ -87,7 +87,7 @@ const EthLabScratchPad = () => {
 
   return (
     <>
-      <div className="flex gap-4 justify-between mt-20 mb-4 items-center">
+      <div className="flex gap-4 justify-between mb-4 items-center">
         <div className="dark:text-white">
           <h3>ScratchPad</h3>
           <span className="text-sm text-gray-500 dark:text-gray-400">

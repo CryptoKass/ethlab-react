@@ -43,7 +43,7 @@ const ContractMethod: React.FC<ContractMethodProps> = (props) => {
   };
 
   return (
-    <Accordion className="bg-gray-100 dark:bg-gray-900">
+    <Accordion className="bg-gray-100 dark:bg-gray-800">
       <Accordion.Panel>
         <Accordion.Title className="p-3">
           <h4 className="font-bold text-lg">
@@ -60,7 +60,7 @@ const ContractMethod: React.FC<ContractMethodProps> = (props) => {
             </small>
           </h4>
         </Accordion.Title>
-        <Accordion.Content className="p-4 bg-white dark:bg-gray-900">
+        <Accordion.Content className="p-4 bg-white dark:bg-gray-800">
           <div className="space-y-4">
             <div></div>
             <form

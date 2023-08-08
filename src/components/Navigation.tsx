@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar border fluid className="bg-gray-100 dark:bg-gray-900">
+    <Navbar fluid className="dark:bg-transparent">
       <Link to="/">
         <Navbar.Brand
           as="div"

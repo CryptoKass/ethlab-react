@@ -5,7 +5,8 @@ import { Spinner, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Avvvatars from "avvvatars-react";
-import { ReactComponent as FileShieldSVG } from "@/assets/file-shield.svg";
+import { ReactComponent as FileSearchSVG } from "@/assets/file-search.svg";
+import EthLabPage from "./EthLabPage";
 
 const ContractsPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -31,10 +32,10 @@ const ContractsPage = () => {
   }, []);
 
   return (
-    <div className="container mx-auto my-20 px-4">
+    <EthLabPage>
       <article className="format dark:text-white mx-auto mb-8">
-        <h5 className="dark:text-white text-black flex items-baseline">
-          <FileShieldSVG className="w-5 h-5 mr-2 inline" />
+        <h5 className="dark:text-white text-black flex items-stretch">
+          <FileSearchSVG className="w-5 h-5 mr-2 inline" />
           <span className="uppercase">Contracts</span>
         </h5>
         <p className="text-sm">
@@ -42,9 +43,9 @@ const ContractsPage = () => {
           `public/contracts.json` file. Click on a contract to interact.
         </p>
       </article>
-      <hr />
+
       <div className="my-10 max-w-2xl mx-auto">
-        <Table striped className="text-md">
+        <Table className="text-md">
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
             <Table.HeadCell>Name</Table.HeadCell>
@@ -96,7 +97,7 @@ const ContractsPage = () => {
           </Table.Body>
         </Table>
       </div>
-    </div>
+    </EthLabPage>
   );
 };
 

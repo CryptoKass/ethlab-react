@@ -15,8 +15,10 @@ const Footer = () => (
       </div>
       <EthLabBlockNumber />
     </div>
+
     <ToastContainer position="bottom-right" />
-    <footer className="text-center">
+
+    <footer className="text-center absolute bottom-0 p-4 w-full -z-10">
       <small className="block text-center">
         <b>🧪 EthLab</b> version: hydrogen <code>(0.0.1)</code>
       </small>

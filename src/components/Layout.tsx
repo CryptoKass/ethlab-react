@@ -13,11 +13,11 @@ const Layout = () => {
     <Flowbite theme={{ theme: ethlabTheme }}>
       <EthLabProvider initialRPC={RPC_URL}>
         <div className="font-mono text-gray-950 dark:text-white">
-          <Navigation />
-          <div className="min-h-[80vh]">
+          <div className="min-h-screen relative pb-20">
+            <Navigation />
             <Outlet />
+            <Footer />
           </div>
-          <Footer />
         </div>
       </EthLabProvider>
     </Flowbite>

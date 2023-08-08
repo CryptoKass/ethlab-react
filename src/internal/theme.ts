@@ -3,12 +3,12 @@ import { CustomFlowbiteTheme } from "flowbite-react";
 export const ethlabTheme: CustomFlowbiteTheme = {
   button: {
     color: {
-      info: "bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900",
-      gray: "hover:text-gray-900 dark:hover:text-gray-100 bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100",
+      info: "bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900",
+      gray: "hover:text-gray-800 dark:hover:text-gray-100 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100",
     },
     pill: {
-      off: "rounded",
-      on: "rounded-full",
+      off: "rounded flex items-center justify-center",
+      on: "rounded-full flex items-center justify-center",
     },
   },
 
@@ -30,9 +30,9 @@ export const ethlabTheme: CustomFlowbiteTheme = {
 
   navbar: {
     link: {
-      base: "hover:underline md:hover:!text-black uppercase",
+      base: "hover:underline md:hover:!text-black md:hover:dark:!text-white uppercase",
       active: {
-        on: "text-black underline",
+        on: "text-black dark:text-white !underline",
       },
     },
   },
