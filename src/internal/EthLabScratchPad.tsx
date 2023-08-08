@@ -6,6 +6,8 @@ import { ethers } from "ethers";
 import { Button, Select } from "flowbite-react";
 import { useRef, useState } from "react";
 import { useProvider, useSigner } from "./hooks";
+import CodeBlock from "./CodeBlock";
+import { CodeLine } from "./types";
 
 const EthLabScratchPad = () => {
   const [code, setCode] = useState<string>(
@@ -17,7 +19,9 @@ const EthLabScratchPad = () => {
       'console.log("Balance", ethers.formatEther(bal));\n'
   );
   const [theme, setTheme] = useState<string>("light");
-  const [output, setOutput] = useState<string>("");
+  //const [output, setOutput] = useState<string>("");
+  const [output, setOutput] = useState<CodeLine[]>([]);
+
   const provider = useProvider();
   const signer = useSigner();
   const terminalRef = useRef(null);
@@ -45,24 +49,28 @@ const EthLabScratchPad = () => {
     const originalConsoleError = console.error;
 
     const gotoBottom = () => {
-      if (!terminalRef.current) return;
-      const terminal = terminalRef.current as HTMLDivElement;
-      terminal.scrollTop = terminal.scrollHeight;
+      requestAnimationFrame(() => {
+        if (!terminalRef.current) return;
+        const terminal = terminalRef.current as HTMLDivElement;
+        terminal.scrollTop = terminal.scrollHeight - 100;
+      });
     };
 
     const _console_log = (message?: any, ...optionalParams: any[]) => {
       originalConsoleLog(message, ...optionalParams);
-      setOutput(
-        (output) => output + message + " " + optionalParams.join(" ") + "\n"
-      );
+      setOutput((output) => [
+        ...output,
+        { type: "focus", content: message + " " + optionalParams.join(" ") },
+      ]);
       gotoBottom();
     };
 
     const _console_error = (message?: any, ...optionalParams: any[]) => {
       originalConsoleError(message, ...optionalParams);
-      setOutput(
-        (output) => output + message + " " + optionalParams.join(" ") + "\n"
-      );
+      setOutput((output) => [
+        ...output,
+        { content: message + " " + optionalParams.join(" "), type: "error" },
+      ]);
       gotoBottom();
     };
 
@@ -131,21 +139,15 @@ const EthLabScratchPad = () => {
       <div className="flex gap-4 justify-between my-4 items-center">
         <h3 className="dark:text-white">Output:</h3>
         <div className="flex gap-4">
-          <Button size="xs" color="gray" onClick={() => setOutput("")}>
+          <Button size="xs" color="gray" onClick={() => setOutput([])}>
             Clear
           </Button>
         </div>
       </div>
 
-      <div className="font-mono text-green-700 block h-32 relative p-4 w-full text-sm rounded border-2 dark:bg-black dark:border-gray-600 dark:text-emerald-200">
-        <div
-          className="h-full overflow-y-scroll whitespace-pre"
-          ref={terminalRef}
-          id="terminal"
-        >
-          {output || "No scratchPad console output."}
-        </div>
-      </div>
+      <CodeBlock className="max-h-[200px]" lines={output} ref={terminalRef}>
+        No scratchPad console output.
+      </CodeBlock>
     </>
   );
 };

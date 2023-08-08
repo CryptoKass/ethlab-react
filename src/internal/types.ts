@@ -26,3 +26,8 @@ export interface ContractInfo {
   address: string;
   abi: any;
 }
+
+export interface CodeLine {
+  type?: "mute" | "focus" | "error";
+  content: string;
+}
