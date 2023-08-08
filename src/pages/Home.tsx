@@ -8,19 +8,19 @@ const HomePage = () => {
   return (
     <div className="container mx-auto my-10 px-4">
       <article className="max-w-4xl mx-auto">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center flex-col md:flex-row">
           <img
             className="mx-auto max-h-[500px] h-[50vh] min-h-[200px]"
             src="/images/hero.png"
             alt="EthLab"
           />
-          <article className="format w-full">
+          <article className="format w-full text-center md:text-left">
             <h1 className="dark:text-white">My EthLab</h1>
             <p className="text-lg">
               EthLab is a playground for Ethereum developers. It is a place to
               experiment with smart contracts, transactions, and more.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Link to="/contracts">
                 <Button>
                   <FileShieldSVG className="w-5 h-5 mr-2 inline" />

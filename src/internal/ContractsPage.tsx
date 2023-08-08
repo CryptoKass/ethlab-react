@@ -44,7 +44,7 @@ const ContractsPage = () => {
         </p>
       </article>
 
-      <div className="my-10 max-w-2xl mx-auto">
+      <div className="my-10 max-w-2xl mx-auto w-full">
         <Table className="text-md">
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>

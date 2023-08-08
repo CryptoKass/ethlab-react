@@ -56,6 +56,7 @@ export const ethlabTheme: CustomFlowbiteTheme = {
     root: {
       shadow:
         "absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded -z-10 text-md",
+      wrapper: "relative w-full overflow-x-scroll",
     },
     head: {
       cell: {
