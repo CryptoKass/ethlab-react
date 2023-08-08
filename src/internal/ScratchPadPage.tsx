@@ -1,9 +1,12 @@
 import EthLabScratchPad from "@/internal/EthLabScratchPad";
+import EthLabPage from "./EthLabPage";
 
 const ScratchPadPage = () => (
-  <div className="container max-w-2xl mx-auto my-10 px-4">
-    <EthLabScratchPad />
-  </div>
+  <EthLabPage>
+    <div className="max-w-2xl mx-auto">
+      <EthLabScratchPad />
+    </div>
+  </EthLabPage>
 );
 
 export default ScratchPadPage;

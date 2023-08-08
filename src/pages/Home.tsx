@@ -28,10 +28,12 @@ const HomePage = () => {
                 </Button>
               </Link>
 
-              <Button outline color="gray">
-                <FileSearchSVG className="w-5 h-5 mr-2 inline" />
-                Txns
-              </Button>
+              <Link to="/transactions">
+                <Button outline color="gray">
+                  <FileSearchSVG className="w-5 h-5 mr-2 inline" />
+                  Txns
+                </Button>
+              </Link>
               <Link to="/scratchpad">
                 <Button outline color="gray">
                   <TerminalSvg className="w-5 h-5 mr-2 inline" />

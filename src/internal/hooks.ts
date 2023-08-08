@@ -68,8 +68,12 @@ export const useBlockNumber = (refresh = true) => {
     if (newBlockNumber !== blockNumber) setBlockNumber(newBlockNumber);
   };
 
+  let cleanup = () => {};
+
   useEffect(() => {
+    cleanup();
     if (!provider) return;
+
     // set initial blockNumber
     provider.getBlockNumber().then(setBlockNumber).catch(console.error);
 
@@ -77,9 +81,10 @@ export const useBlockNumber = (refresh = true) => {
     if (refresh) provider.on("block", setBlockNumberFromProvider);
 
     // cleanup
-    return () => {
+    cleanup = () =>
       provider.removeListener("block", setBlockNumberFromProvider);
-    };
+
+    return cleanup;
   }, [provider, refresh]);
 
   return blockNumber;

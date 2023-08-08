@@ -5,6 +5,16 @@ export const shortAddress = (address?: string | null) => {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
 };
 
+export const humanizeNumber = (n: number) => {
+  if (n < 0.001) return `<0.001`;
+  if (n < 1) return n.toFixed(3);
+  if (n < 1_000) return n.toFixed(2);
+  if (n < 1_000_000) return `${(n / 1000).toFixed(2)}k`;
+  if (n < 1_000_000_000) return `${(n / 1_000_000).toFixed(2)}m`;
+  if (n < 1_000_000_000_000) return `${(n / 1_000_000_000).toFixed(2)}b`;
+  return `${(n / 1_000_000_000_000).toFixed(2)}t`;
+};
+
 export const isPayable = (contract: Contract, method: string) => {
   const fragment = contract.interface.getFunction(method);
   if (fragment == null) return false;

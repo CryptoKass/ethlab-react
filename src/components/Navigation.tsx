@@ -31,6 +31,11 @@ const Navigation = () => {
             ScratchPad
           </Link>
         </Navbar.Link>
+        <Navbar.Link as="div" className="flex gap-1 items-center h-full">
+          <Link to="/transactions" className="font-bold">
+            Transactions
+          </Link>
+        </Navbar.Link>
       </Navbar.Collapse>
       <EthLabWalletButton />
       <Navbar.Toggle />

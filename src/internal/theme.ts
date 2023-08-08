@@ -12,6 +12,15 @@ export const ethlabTheme: CustomFlowbiteTheme = {
     },
   },
 
+  badge: {
+    root: {
+      color: {
+        info: "bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900",
+        gray: "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+      },
+    },
+  },
+
   textInput: {
     field: {
       input: {
