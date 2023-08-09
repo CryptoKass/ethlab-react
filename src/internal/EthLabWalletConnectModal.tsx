@@ -1,4 +1,4 @@
-import { Button as Btn, Modal, Spinner, TextInput } from "flowbite-react";
+import { Button as Btn, Modal, Spinner } from "flowbite-react";
 import { useConnect } from "./EthLabContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
