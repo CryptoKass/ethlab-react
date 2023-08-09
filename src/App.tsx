@@ -1,28 +1,10 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/Home";
-import Layout from "./components/Layout";
-import { routes } from "./internal/routes";
-import NotFoundPage from "./pages/NotFound";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
+// Add new routes in `./routes.tsx`.
+// Modify the layout see `./components/Layout.tsx`.
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        // load EthLab development routes:
-        //  → /contracts
-        //  → /transactions
-        //  → /scratchpad etc.
-        ...routes.dev,
-
-        // → add your custom pages here:
-        { path: "/", element: <HomePage /> },
-        { path: "*", element: <NotFoundPage /> },
-      ],
-    },
-  ]);
-
   return <RouterProvider router={router} />;
 }
 
