@@ -3,6 +3,7 @@ import { TransactionDetails } from "./types";
 import { shortAddress } from "./utils";
 import { Link } from "react-router-dom";
 import { Badge } from "flowbite-react";
+import EthLabAccountTooltip from "./EthLabAccountTooltip";
 
 interface EthLabTransactionActionProps {
   details: TransactionDetails;
@@ -21,24 +22,23 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
       {/* SEND */}
       {details.action.type === "send" && (
         <div className="flex flex-wrap gap-2">
-          <Link
-            to={`/address/${details.from}`}
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-          >
-            {shortAddress(details.from)}
-          </Link>
+          <EthLabAccountTooltip address={details.from}>
+            <span className="text-black dark:text-white font-bold">
+              {shortAddress(details.from)}
+            </span>
+          </EthLabAccountTooltip>
           <span className="opacity-50">→</span>
           <span>
             {formatEther(details.value)}
             <small> ETH</small>
           </span>
           <span className="opacity-50">→</span>
-          <Link
-            to={`/address/${details.to}`}
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-          >
-            {shortAddress(details.to)}
-          </Link>
+
+          <EthLabAccountTooltip address={details.to!}>
+            <span className="text-black dark:text-white font-bold">
+              {shortAddress(details.to)}
+            </span>
+          </EthLabAccountTooltip>
         </div>
       )}
 
@@ -48,7 +48,7 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
           <span>Contract Created</span>
           <span className="opacity-50">→</span>
           <Link
-            to={`/contract/${details.from}`}
+            to={`/contract/${details.contract}`}
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             {shortAddress(details.contract)}
@@ -59,13 +59,13 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
       {/* CONTRACT CALLED */}
       {details.action.type === "call" && (
         <div className="flex flex-wrap gap-2">
-          <Link to={`/address/${details.from}`}>
+          <EthLabAccountTooltip address={details.from}>
             CALLER
-            <small className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <small className="text-black dark:text-white font-bold">
               {" "}
               ({shortAddress(details.from)})
             </small>
-          </Link>
+          </EthLabAccountTooltip>
           <span className="opacity-50">→</span>
           <Link to={`/contracts/${details.to}`}>
             CONTRACT

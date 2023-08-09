@@ -6,6 +6,7 @@ export const shortAddress = (address?: string | null) => {
 };
 
 export const humanizeNumber = (n: number) => {
+  if (n == 0) return "0";
   if (n < 0.001) return `<0.001`;
   if (n < 1) return n.toFixed(3);
   if (n < 1_000) return n.toFixed(2);

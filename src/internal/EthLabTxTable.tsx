@@ -3,6 +3,7 @@ import { TransactionSnippet } from "./types";
 import { Link } from "react-router-dom";
 import { humanizeNumber, shortAddress } from "./utils";
 import { formatEther } from "ethers";
+import EthLabAccountTooltip from "./EthLabAccountTooltip";
 
 interface EthLabTxTableProps {
   txs: TransactionSnippet[];
@@ -22,16 +23,23 @@ const EthLabTxTable: React.FC<EthLabTxTableProps> = (props) => {
       <Table.Body>
         {props.txs.map((tx) => (
           <Table.Row key={tx.hash}>
-            <Table.Cell>
+            <Table.Cell className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
               <Link to={`/transactions/${tx.hash}`}>
                 {tx.hash.slice(0, 8)}...
               </Link>
             </Table.Cell>
             <Table.Cell>
-              <Link to={`/accounts/${tx.from}`}>{shortAddress(tx.from)}</Link>
+              <EthLabAccountTooltip address={tx.from}>
+                {shortAddress(tx.from)}
+              </EthLabAccountTooltip>
             </Table.Cell>
             <Table.Cell>
-              <Link to={`/accounts/${tx.to}`}>{shortAddress(tx.to)}</Link>
+              {tx.to === null && <>CONTRACT CREATION</>}
+              {tx.to !== null && tx.to && (
+                <EthLabAccountTooltip address={tx.to}>
+                  {shortAddress(tx.to)}
+                </EthLabAccountTooltip>
+              )}
             </Table.Cell>
             <Table.Cell>
               {humanizeNumber(parseFloat(formatEther(tx.value.toString())))}

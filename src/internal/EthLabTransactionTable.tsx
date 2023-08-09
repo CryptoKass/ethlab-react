@@ -3,6 +3,7 @@ import { TransactionDetails } from "./types";
 import { formatEther } from "ethers";
 import EthLabTransactionAction from "./EthLabTransactionAction";
 import { Link } from "react-router-dom";
+import EthLabAccountTooltip from "./EthLabAccountTooltip";
 
 interface EthLabTransactionTableProps {
   details: TransactionDetails;
@@ -39,28 +40,32 @@ const EthLabTransactionTable: React.FC<EthLabTransactionTableProps> = ({
         <Table.Row>
           <Table.HeadCell>From</Table.HeadCell>
           <Table.Cell>
-            <Link
-              to={`/address/${details.from}`}
-              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >
-              {details.from}
-            </Link>
+            <EthLabAccountTooltip address={details.from}>
+              <span className="font-bold text-black dark:text-white">
+                {details.from}
+              </span>
+            </EthLabAccountTooltip>
           </Table.Cell>
         </Table.Row>
 
         <Table.Row>
           <Table.HeadCell>To</Table.HeadCell>
           <Table.Cell>
-            <Link
-              to={
-                details.action.type === "call"
-                  ? `/contracts/${details.to}`
-                  : `/address/${details.to}`
-              }
-              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >
-              {details.to}
-            </Link>
+            {details.action.type === "call" && (
+              <Link
+                to={`/contracts/${details.to}`}
+                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >
+                {details.to}
+              </Link>
+            )}
+            {details.action.type === "send" && (
+              <EthLabAccountTooltip address={details.to!}>
+                <span className="font-bold text-black dark:text-white">
+                  {details.to}
+                </span>
+              </EthLabAccountTooltip>
+            )}
           </Table.Cell>
         </Table.Row>
 
