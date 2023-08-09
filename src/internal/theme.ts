@@ -57,9 +57,12 @@ export const ethlabTheme: CustomFlowbiteTheme = {
     root: {
       shadow:
         "absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded -z-10 text-md",
-      wrapper: "relative w-full overflow-x-scroll pt-[200px] mt-[-200px]",
+      wrapper:
+        "relative w-full overflow-x-scroll pt-[200px] mt-[-200px] pointer-events-none",
       /* overflow-x-scroll also hides any tooltip that extends above,
-        so weird hack to ensure they still show up.*/
+        so need to pad the top, this can block point events to above elements so 
+        we need 'pointer-events-none'.*/
+      base: "pointer-events-auto",
     },
     head: {
       cell: {
