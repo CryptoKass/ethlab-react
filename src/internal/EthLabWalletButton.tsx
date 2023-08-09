@@ -7,6 +7,7 @@ import { Button } from "flowbite-react";
 import { formatEther } from "ethers";
 import EthLabWalletModal from "./EthLabWalletModal";
 import ButtonGroup from "flowbite-react/lib/esm/components/Button/ButtonGroup";
+import { humanizeNumber } from "./utils";
 
 const EthLabWalletButton: React.FC = () => {
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false);
@@ -31,7 +32,11 @@ const EthLabWalletButton: React.FC = () => {
             <Button onClick={() => setOpenWalletModal(true)}>
               {address.slice(0, 6) + "..." + address.slice(-4)}
             </Button>
-            <Button>{formatEther(balance?.toString() || 0)}</Button>
+            <Button>
+              {humanizeNumber(
+                parseFloat(formatEther(balance?.toString() || 0))
+              )}
+            </Button>
           </ButtonGroup>
         </>
       )}

@@ -2,6 +2,7 @@ import { Button as Btn, Modal, Spinner, TextInput } from "flowbite-react";
 import { useConnect } from "./EthLabContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import EthLabConnectInternal from "./EthLabConnectInternal";
 
 interface EthLabWalletModalProps {
   openModal: boolean;
@@ -73,32 +74,16 @@ const EthLabWalletConnectModal: React.FC<EthLabWalletModalProps> = (props) => {
               </div>
             </Btn>
 
-            <div className="flex gap-4 items-center">
-              <hr className="w-full dark:border-gray-500" />
-              <span className="dark:text-gray-400">Other</span>
-              <hr className="w-full dark:border-gray-500" />
-            </div>
-
-            <div className="flex font-mono">
-              <TextInput
-                color="gray"
-                style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
-                className="w-full"
-                placeholder="Private Key"
-                value={""}
-              />
-              <Btn
-                style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
-                color="gray"
-              >
-                Connect
-              </Btn>
-            </div>
+            <EthLabConnectInternal
+              onConnected={() => {
+                props.setOpenModal(false);
+              }}
+            />
 
             <article className="format text-sm text-gray-500 dark:text-gray-400">
               <p>
                 You can assign additional named accounts in your
-                ethlab.config.ts file.
+                ./src/assets/accounts.json file.
               </p>
             </article>
           </div>
