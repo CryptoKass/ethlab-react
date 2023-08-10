@@ -7,21 +7,16 @@ import { useEffect, useState } from "react";
 import Avvvatars from "avvvatars-react";
 import { ReactComponent as FileSearchSVG } from "@/assets/file-search.svg";
 import EthLabPage from "./EthLabPage";
+import { getAllContractInfos } from "./contracts";
 
 const ContractsPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [contracts, setContracts] = useState<ContractInfo[]>([]);
 
   const loadContracts = async () => {
-    const _response = await fetch("/contracts.json");
-    const _deployments = await _response.json();
-
-    const _contracts = Object.keys(_deployments.contracts).map((name) => {
-      const { abi, address } = _deployments.contracts[name];
-      return { name, address, abi } as ContractInfo;
-    });
-
-    setContracts(_contracts);
+    setLoading(true);
+    setContracts(getAllContractInfos());
+    setLoading(false);
   };
 
   useEffect(() => {

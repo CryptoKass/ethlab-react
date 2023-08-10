@@ -8,6 +8,7 @@ import { useBalance, useProvider, useSigner } from "@/internal/hooks";
 import { ReactComponent as FileShieldSVG } from "@/assets/file-shield.svg";
 import EthLabPage from "./EthLabPage";
 import Avvvatars from "avvvatars-react";
+import { getContractInfo } from "./contracts";
 
 const ContractPage = () => {
   const { address } = useParams();
@@ -19,22 +20,14 @@ const ContractPage = () => {
 
   useEffect(() => {
     const connector = signer || provider;
+    if (!connector) return;
+    if (!address) return;
 
-    fetch("/contracts.json")
-      .then((response) => response.json())
-      .then((deployments) => {
-        // get the deployment for the contract at the given address
-        const _contractName: any = Object.keys(deployments.contracts).find(
-          (_name: string) => deployments.contracts[_name].address == address
-        );
-        // if the deployment is not found, return
-        if (!_contractName) return;
-        // otherwise, create a new contract instance
-        const { abi } = deployments.contracts[_contractName];
-        const contract = new Contract(address as string, abi, connector);
-        setName(_contractName);
-        setContract(contract);
-      });
+    const _contractInfo = getContractInfo(address);
+    const _contract = new Contract(address, _contractInfo.abi, connector);
+
+    setName(_contractInfo.name);
+    setContract(_contract);
   }, [address, signer, provider]);
 
   return (

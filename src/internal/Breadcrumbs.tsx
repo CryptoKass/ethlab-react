@@ -10,7 +10,7 @@ const Breadcrumbs = () => {
   }
 
   crumbs = crumbs.map((crumb) => {
-    if (crumb === "") return "Home";
+    if (crumb === "") return "🧪";
     if (crumb.startsWith("0x")) return crumb.slice(0, 6) + "...";
     return crumb.charAt(0).toUpperCase() + crumb.slice(1);
   });
