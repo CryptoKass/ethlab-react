@@ -1,5 +1,6 @@
 import type { Provider } from "ethers";
 import { TransactionDetails, TransactionSnippet } from "./types";
+import { TransactionResponse } from "ethers";
 
 export const fetchAllTransactions = async (
   provider: Provider,
@@ -7,17 +8,24 @@ export const fetchAllTransactions = async (
   toBlock: number
 ) => {
   const txs: TransactionSnippet[] = [];
+  if (fromBlock < 0) fromBlock = 0;
+  if (toBlock < 0) toBlock = 0;
 
   for (let i = fromBlock; i <= toBlock; i++) {
     const block = await provider.getBlock(i, true);
     block?.transactions.forEach(async (txHash) => {
       const tx = block.getPrefetchedTransaction(txHash);
+      const method = tx.data.slice(0, 10);
       txs.push({
         hash: tx.hash,
         block: i,
         from: tx.from,
         to: tx.to,
         value: tx.value.toString(),
+        method: method,
+        action: {
+          type: inferActionType(tx),
+        },
       });
     });
   }
@@ -35,10 +43,6 @@ export const fetchTransactionDetails = async (
     throw new Error(`Could not find transaction ${txHash}`);
   const block = await provider.getBlock(tx.blockNumber!);
 
-  let actionType: "send" | "call" | "create" = "send";
-  if (tx.to == null) actionType = "create";
-  else if (tx.data.length > 2) actionType = "call";
-
   return {
     hash: tx.hash,
     block: receipt.blockNumber,
@@ -53,7 +57,15 @@ export const fetchTransactionDetails = async (
     logs: receipt.logs,
     timestamp: block?.timestamp || 0,
     action: {
-      type: actionType,
+      type: inferActionType(tx),
     },
   };
+};
+
+const inferActionType = (
+  tx: TransactionResponse
+): "create" | "call" | "send" => {
+  if (tx.to == null) return "create";
+  else if (tx.data.length > 2) return "call";
+  return "send";
 };

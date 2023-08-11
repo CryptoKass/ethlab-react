@@ -1,9 +1,10 @@
-import { Spinner, Table } from "flowbite-react";
+import { Badge, Spinner, Table } from "flowbite-react";
 import { TransactionSnippet } from "./types";
 import { Link } from "react-router-dom";
 import { humanizeNumber, shortAddress } from "./utils";
 import { formatEther } from "ethers";
 import EthLabAccountTooltip from "./EthLabAccountTooltip";
+import EthLabTransactionIntent from "./EthLabTransactionIntent";
 
 interface EthLabTxTableProps {
   txs: TransactionSnippet[];
@@ -14,19 +15,34 @@ const EthLabTxTable: React.FC<EthLabTxTableProps> = (props) => {
   return (
     <Table>
       <Table.Head>
-        <Table.HeadCell>Hash</Table.HeadCell>
-        <Table.HeadCell>From</Table.HeadCell>
-        <Table.HeadCell>To</Table.HeadCell>
-        <Table.HeadCell>Value</Table.HeadCell>
-        <Table.HeadCell>BlockNumber</Table.HeadCell>
+        <Table.HeadCell className="text-left">Hash</Table.HeadCell>
+        <Table.HeadCell className="text-left">Method</Table.HeadCell>
+        <Table.HeadCell className="text-left">From</Table.HeadCell>
+        <Table.HeadCell className="text-left"></Table.HeadCell>
+        <Table.HeadCell className="text-left">To</Table.HeadCell>
+        <Table.HeadCell className="text-left">Value</Table.HeadCell>
+        <Table.HeadCell className="text-left">Block</Table.HeadCell>
       </Table.Head>
       <Table.Body>
         {props.txs.map((tx) => (
           <Table.Row key={tx.hash}>
-            <Table.Cell className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-              <Link to={`/transactions/${tx.hash}`}>
-                {tx.hash.slice(0, 8)}...
+            <Table.Cell>
+              <Link
+                className=" hover:underline"
+                to={`/transactions/${tx.hash}`}
+              >
+                <div className="text-blue-600 dark:text-blue-500">
+                  {tx.hash.slice(0, 16)}...
+                </div>
               </Link>
+            </Table.Cell>
+            <Table.Cell>
+              <Badge
+                color="indigo"
+                className="justify-center px-2 overflow-x-scroll"
+              >
+                <EthLabTransactionIntent lite details={tx} />
+              </Badge>
             </Table.Cell>
             <Table.Cell>
               <EthLabAccountTooltip address={tx.from}>
@@ -34,7 +50,12 @@ const EthLabTxTable: React.FC<EthLabTxTableProps> = (props) => {
               </EthLabAccountTooltip>
             </Table.Cell>
             <Table.Cell>
-              {tx.to === null && <>CONTRACT CREATION</>}
+              <Badge color="success" className="mr-2 inline-block px-2">
+                →
+              </Badge>
+            </Table.Cell>
+            <Table.Cell>
+              {tx.to === null && <>-</>}
               {tx.to !== null && tx.to && (
                 <EthLabAccountTooltip address={tx.to}>
                   {shortAddress(tx.to)}

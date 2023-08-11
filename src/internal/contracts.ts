@@ -1,5 +1,6 @@
 import { ContractInfo } from "@/internal/types";
 import ContractJSON from "@/assets/contracts.data.json";
+import MethodsJSON from "@/assets/contracts.methods.json";
 import { Contract } from "ethers";
 
 export const getContractInfo = (address: string): ContractInfo => {
@@ -28,4 +29,10 @@ export const getAllContractInfos = () => {
   return ContractJSON.deployments.map((d: any) => {
     return getContractInfo(d.address);
   });
+};
+
+export const getMethodSignature = (methodId: string, fallback?: string) => {
+  const signature = (MethodsJSON as any)[methodId];
+  if (signature == undefined && fallback) return fallback;
+  return signature;
 };

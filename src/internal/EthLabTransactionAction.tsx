@@ -4,6 +4,8 @@ import { shortAddress } from "./utils";
 import { Link } from "react-router-dom";
 import { Badge } from "flowbite-react";
 import EthLabAccountTooltip from "./EthLabAccountTooltip";
+import { getMethodSignature } from "./contracts";
+import EthLabTransactionIntent from "./EthLabTransactionIntent";
 
 interface EthLabTransactionActionProps {
   details: TransactionDetails;
@@ -14,8 +16,8 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
 }) => {
   return (
     <>
-      <Badge className="text-md inline-block px-4 mb-2">
-        {details.action.type}
+      <Badge className="inline-block px-2 mb-2">
+        <EthLabTransactionIntent details={details} />
       </Badge>
       <br />
 
@@ -58,7 +60,7 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
 
       {/* CONTRACT CALLED */}
       {details.action.type === "call" && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 max-w-full">
           <EthLabAccountTooltip address={details.from}>
             CALLER
             <small className="text-black dark:text-white font-bold">
@@ -68,15 +70,16 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
           </EthLabAccountTooltip>
           <span className="opacity-50">→</span>
           <Link to={`/contracts/${details.to}`}>
-            CONTRACT
+            (CONTRACT)
             <small className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
               {" "}
               ({shortAddress(details.to)})
             </small>
           </Link>
           <span className="opacity-50">→</span>
+          CALL
           <span>
-            (METHOD) <b>{details.method}</b>
+            <b>{getMethodSignature(details.method || "0x")}()</b>
           </span>
         </div>
       )}

@@ -52,7 +52,7 @@ const TransactionsPage = () => {
         </p>
         <ToggleSwitch label="Live mode" checked={isLive} onChange={setIsLive} />
       </article>
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto w-full max-w-5xl">
         <EthLabTransactionsTable txs={[...txs.reverse()]} loading={loading} />
       </div>
     </EthLabPage>

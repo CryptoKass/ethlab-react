@@ -6,12 +6,12 @@ export interface TransactionSnippet {
   from: string;
   to: string | null;
   value: string;
+  method: string | null;
 }
 
 export interface TransactionDetails extends TransactionSnippet {
   contract: string | null;
   data: string;
-  method: string | null;
   gasLimit: string;
   gasPrice: string;
   logs: readonly Log[];
