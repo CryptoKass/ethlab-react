@@ -24,11 +24,11 @@ const EthLabConnectInternal: React.FC<EthLabConnectInternalProps> = (props) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex items-stretch">
       <Select
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        className="max-w-full w-full"
+        className="w-full"
         sizing="3xl"
       >
         {AccountsJSON.map((account) => (

@@ -33,7 +33,7 @@ export const ethlabTheme: CustomFlowbiteTheme = {
   select: {
     field: {
       select: {
-        base: "!rounded",
+        base: "w-full h-full cursor-pointer disabled:cursor-default",
       },
     },
   },
