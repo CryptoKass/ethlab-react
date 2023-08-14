@@ -1,10 +1,9 @@
 "use client";
 import EthLabBlockNumber from "@/internal/EthLabBlockNumber";
 import EthLabHardhatButton from "@/internal/EthLabHardhatButton";
+import config from "@/internal/config";
 import { DarkThemeToggle } from "flowbite-react";
 import { ToastContainer } from "react-toastify";
-
-const RPC_MODE = import.meta.env.VITE_RPC_MODE || "default";
 
 const Footer = () => (
   <>
@@ -12,7 +11,7 @@ const Footer = () => (
 
     <div className="fixed bottom-0 left-0 px-4 p-4 z-10">
       <div className="flex gap-2">
-        {RPC_MODE == "hardhat" && <EthLabHardhatButton />}
+        {config.RPC_MODE == "hardhat" && <EthLabHardhatButton />}
         <DarkThemeToggle />
       </div>
     </div>

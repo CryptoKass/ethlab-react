@@ -3,12 +3,10 @@
 import { JsonRpcProvider } from "ethers";
 import { useState } from "react";
 import EthLabEvmButton from "./EthLabEvmButton";
-
-// VITE_RPC_URL: defined inside the .env file
-const RPC_URL = import.meta.env.VITE_RPC_URL || "http://127.0.0.1:8545";
+import config from "./config";
 
 export const EthLabSnapshot = () => {
-  const provider = new JsonRpcProvider(RPC_URL);
+  const provider = new JsonRpcProvider(config.RPC_URL);
   const [snapshotId, setSnapshotId] = useState<string>("");
 
   return (
