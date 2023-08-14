@@ -4,13 +4,7 @@ import { JsonRpcProvider } from "ethers";
 import { Contract } from "ethers";
 import { type Provider, type Signer } from "ethers";
 
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 
 interface EthLabContext {
   provider: Provider | null;
