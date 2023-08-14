@@ -1,6 +1,8 @@
 "use client";
 import { formatEther } from "ethers";
-import { Button, Modal, TextInput } from "flowbite-react";
+import { Button, Modal } from "flowbite-react";
+import EthLabSendEth from "./EthLabSendEth";
+import EthLabGetFromFaucet from "./EthLabGetFromFaucet";
 
 interface EthLabWalletModalProps {
   address: string;
@@ -39,16 +41,12 @@ const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
 
           <div className="space-y-2">
             <h4 className="text-lg">Send Eth</h4>
-            <div className="flex flex-wrap gap-4 w-full">
-              <TextInput size={15} placeholder="Address" />
-              <TextInput size={8} placeholder="Amount" />
-              <Button color="gray">Send</Button>
-            </div>
+            <EthLabSendEth />
           </div>
           <div className="space-y-2">
             <h4 className="text-lg">Misc</h4>
             <div className="flex flex-wrap gap-4">
-              <Button color="gray">Get Eth From Faucet</Button>
+              <EthLabGetFromFaucet />
             </div>
           </div>
           <Button className="w-full">Disconnect</Button>
