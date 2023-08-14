@@ -27,10 +27,11 @@ const TransactionPage = () => {
         <h5 className="dark:text-white text-black flex items-stretch">
           <ReceiptSVG className="w-5 h-5 mr-2 inline" />
           <span className="uppercase">Transaction:</span>
-          <span>{details?.hash.slice(0, 8)}...</span>
+          <span> {details?.hash.slice(0, 8)}...</span>
         </h5>
+        <p className="text-sm">Transaction Details</p>
       </article>
-      <div className="mx-auto max-w-3xl">
+      <div className="w-full mx-auto max-w-5xl rounded overflow-hidden">
         {details && <EthLabTransactionTable details={details} />}
         {!details && <Spinner className="mx-auto" />}
       </div>

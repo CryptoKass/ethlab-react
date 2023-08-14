@@ -4,7 +4,6 @@ import { shortAddress } from "./utils";
 import { Link } from "react-router-dom";
 import { Badge } from "flowbite-react";
 import EthLabAccountTooltip from "./EthLabAccountTooltip";
-import { getMethodSignature } from "./contracts";
 import EthLabTransactionIntent from "./EthLabTransactionIntent";
 
 interface EthLabTransactionActionProps {
@@ -16,7 +15,7 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
 }) => {
   return (
     <>
-      <Badge className="inline-block px-2 mb-2">
+      <Badge color="indigo" className="inline-block px-2 mb-2">
         <EthLabTransactionIntent details={details} />
       </Badge>
       <br />
@@ -78,9 +77,6 @@ const EthLabTransactionAction: React.FC<EthLabTransactionActionProps> = ({
           </Link>
           <span className="opacity-50">→</span>
           CALL
-          <span>
-            <b>{getMethodSignature(details.method || "0x")}()</b>
-          </span>
         </div>
       )}
     </>
