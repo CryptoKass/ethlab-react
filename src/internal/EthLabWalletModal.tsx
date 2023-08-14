@@ -1,8 +1,9 @@
 "use client";
 import { formatEther } from "ethers";
-import { Button, Modal } from "flowbite-react";
+import { Button, Modal, Tooltip } from "flowbite-react";
 import EthLabSendEth from "./EthLabSendEth";
 import EthLabGetFromFaucet from "./EthLabGetFromFaucet";
+import { humanizeNumber } from "./utils";
 
 interface EthLabWalletModalProps {
   address: string;
@@ -12,6 +13,8 @@ interface EthLabWalletModalProps {
 }
 
 const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
+  const balanceEth = formatEther(props.balance?.toString() || "0");
+
   return (
     <Modal
       dismissible
@@ -27,7 +30,9 @@ const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
           <div className="space-y-2">
             <h4 className="text-lg">Balance</h4>
             <span className="text-4xl">
-              {formatEther(props.balance?.toString() || "0")}
+              <Tooltip content={`${balanceEth} ETH`}>
+                {humanizeNumber(parseFloat(balanceEth))}
+              </Tooltip>
               <span className="text-neutral-500 text-xl"> ETH</span>
             </span>
           </div>
