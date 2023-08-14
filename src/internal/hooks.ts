@@ -1,6 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { EthLabContext } from "./EthLabContext";
-import { Contract } from "ethers";
+import {
+  BrowserProvider,
+  Contract,
+  JsonRpcProvider,
+  Signer,
+  Wallet,
+} from "ethers";
+import config from "./config";
+import AccountsJSON from "../assets/accounts.json";
 
 /** Returns the provider if it exists, otherwise returns null */
 export const useProvider = () => {
@@ -168,4 +176,51 @@ export const useContractWrite = <T>(
 export const useDisconnect = () => {
   const { disconnect } = useContext(EthLabContext);
   return disconnect;
+};
+
+export const useConnect = () => {
+  const { setProvider, setSigner, setAddress } = useContext(EthLabContext);
+
+  return {
+    connectMetamask: async () => {
+      if (typeof (window as any).ethereum !== "undefined") {
+        const provider = new BrowserProvider((window as any).ethereum);
+        const signer: Signer = await provider.getSigner();
+        const address = await signer.getAddress();
+
+        setProvider(provider);
+        setSigner(signer);
+        setAddress(address);
+        return signer;
+      } else throw new Error("Metamask not found");
+    },
+    connectBurner: async (rpc = config.RPC_URL) => {
+      const provider = new JsonRpcProvider(rpc);
+      const wallet = Wallet.createRandom();
+      const signer: Signer = wallet.connect(provider);
+
+      setProvider(provider);
+      setSigner(signer);
+      setAddress(wallet.address);
+      return signer;
+    },
+    connectInternalAccount: async (
+      address: string,
+      // VITE_RPC_URL: defined inside the .env file
+      rpc = config.RPC_URL
+    ) => {
+      const acc = AccountsJSON.find(
+        (account) => account.address.toLowerCase() === address.toLowerCase()
+      );
+
+      if (!acc) throw new Error("Account not found");
+
+      const provider = new JsonRpcProvider(rpc);
+      const wallet = new Wallet(acc.key, provider);
+
+      setProvider(provider);
+      setSigner(wallet);
+      setAddress(wallet.address);
+    },
+  };
 };
