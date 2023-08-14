@@ -164,3 +164,8 @@ export const useContractWrite = <T>(
 
   return { result, error, write, loading };
 };
+
+export const useDisconnect = () => {
+  const { disconnect } = useContext(EthLabContext);
+  return disconnect;
+};

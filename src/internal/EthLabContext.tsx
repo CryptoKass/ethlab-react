@@ -24,6 +24,7 @@ interface EthLabContext {
   setAddress: (address: string) => void;
   setContracts: (contracts: Record<string, Contract>) => void;
   addContract: (name: string, contract: Contract) => void;
+  disconnect: () => void;
 }
 
 export const EthLabContext = createContext<EthLabContext>({
@@ -36,6 +37,7 @@ export const EthLabContext = createContext<EthLabContext>({
   setAddress: () => {},
   setContracts: () => {},
   addContract: () => {},
+  disconnect: () => {},
 });
 
 interface EthLabProviderProps extends PropsWithChildren<{}> {
@@ -59,6 +61,13 @@ export const EthLabProvider: React.FC<EthLabProviderProps> = ({
     setContracts((contracts) => ({ ...contracts, [name]: contract }));
   };
 
+  const disconnect = () => {
+    setSigner(null);
+    setAddress("");
+    if (initialRPC) setProvider(new JsonRpcProvider(initialRPC));
+    else setProvider(null);
+  };
+
   return (
     <EthLabContext.Provider
       value={{
@@ -71,6 +80,7 @@ export const EthLabProvider: React.FC<EthLabProviderProps> = ({
         setAddress,
         setContracts,
         addContract,
+        disconnect,
       }}
     >
       {children}

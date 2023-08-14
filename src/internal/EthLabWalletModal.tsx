@@ -4,6 +4,8 @@ import { Button, Modal, Tooltip } from "flowbite-react";
 import EthLabSendEth from "./EthLabSendEth";
 import EthLabGetFromFaucet from "./EthLabGetFromFaucet";
 import { humanizeNumber } from "./utils";
+import { useDisconnect } from "./hooks";
+import { toast } from "react-toastify";
 
 interface EthLabWalletModalProps {
   address: string;
@@ -14,6 +16,13 @@ interface EthLabWalletModalProps {
 
 const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
   const balanceEth = formatEther(props.balance?.toString() || "0");
+  const _disconnect = useDisconnect();
+
+  const disconnect = () => {
+    _disconnect();
+    props.setOpenModal(false);
+    toast.error("Wallet disconnected");
+  };
 
   return (
     <Modal
@@ -54,7 +63,9 @@ const EthLabWalletModal: React.FC<EthLabWalletModalProps> = (props) => {
               <EthLabGetFromFaucet />
             </div>
           </div>
-          <Button className="w-full">Disconnect</Button>
+          <Button onClick={disconnect} className="w-full">
+            Disconnect
+          </Button>
         </div>
       </Modal.Body>
     </Modal>
