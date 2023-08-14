@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useBlockNumber, useProvider, useSignerAddress } from "./hooks";
-import { formatEther, parseEther } from "ethers";
+import { parseEther } from "ethers";
 import EthLabEvmButton from "./EthLabEvmButton";
 import { shortAddress } from "./utils";
 import { JsonRpcProvider } from "ethers";
