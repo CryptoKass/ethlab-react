@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 import { Flowbite } from "flowbite-react";
-import { EthLabProvider } from "../internal/EthLabContext";
-import { ethlabTheme } from "../internal/theme";
+import { EthLabProvider } from "../ethlab/EthLabContext";
+import { ethlabTheme } from "../ethlab/theme";
 import Footer from "./Footer";
-import config from "@/internal/config";
+import config from "@/ethlab/config";
 
 const Layout = () => {
   return (

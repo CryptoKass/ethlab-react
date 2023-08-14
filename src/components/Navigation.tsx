@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "flowbite-react";
-import EthLabWalletButton from "@/internal/EthLabWalletButton";
+import EthLabWalletButton from "@/ethlab/EthLabWalletButton";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {

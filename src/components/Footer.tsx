@@ -1,7 +1,7 @@
 "use client";
-import EthLabBlockNumber from "@/internal/EthLabBlockNumber";
-import EthLabHardhatButton from "@/internal/EthLabHardhatButton";
-import config from "@/internal/config";
+import EthLabBlockNumber from "@/ethlab/EthLabBlockNumber";
+import EthLabHardhatButton from "@/ethlab/EthLabHardhatButton";
+import config from "@/ethlab/config";
 import { DarkThemeToggle } from "flowbite-react";
 import { ToastContainer } from "react-toastify";
 

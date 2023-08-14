@@ -1,6 +1,6 @@
 "use client";
 
-import { ContractInfo } from "@/internal/types";
+import { ContractInfo } from "@/ethlab/types";
 import { Spinner, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";

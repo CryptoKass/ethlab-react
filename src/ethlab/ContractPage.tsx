@@ -2,9 +2,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Contract, formatEther } from "ethers";
-import ContractView from "@/internal/ContractView";
+import ContractView from "@/ethlab/ContractView";
 import { Spinner, TextInput } from "flowbite-react";
-import { useBalance, useProvider, useSigner } from "@/internal/hooks";
+import { useBalance, useProvider, useSigner } from "@/ethlab/hooks";
 import { ReactComponent as FileShieldSVG } from "@/assets/file-shield.svg";
 import EthLabPage from "./EthLabPage";
 import Avvvatars from "avvvatars-react";

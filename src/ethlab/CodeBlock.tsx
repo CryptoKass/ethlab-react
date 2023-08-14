@@ -1,5 +1,5 @@
 import { PropsWithChildren, forwardRef } from "react";
-import { CodeLine } from "@/internal/types";
+import { CodeLine } from "@/ethlab/types";
 
 interface CodeBlockProps extends PropsWithChildren {
   className?: string;

@@ -1,4 +1,4 @@
-import EthLabScratchPad from "@/internal/EthLabScratchPad";
+import EthLabScratchPad from "@/ethlab/EthLabScratchPad";
 import EthLabPage from "./EthLabPage";
 
 const ScratchPadPage = () => (

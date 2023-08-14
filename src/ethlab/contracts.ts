@@ -1,4 +1,4 @@
-import { ContractInfo } from "@/internal/types";
+import { ContractInfo } from "@/ethlab/types";
 import ContractJSON from "@/assets/contracts.data.json";
 import MethodsJSON from "@/assets/contracts.methods.json";
 import { Contract } from "ethers";

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { routes } from "./internal/routes";
+import { routes } from "./ethlab/routes";
 import Layout from "./components/Layout";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
