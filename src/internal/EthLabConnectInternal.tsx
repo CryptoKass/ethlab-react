@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useConnect } from "./EthLabContext";
+import { useConnect } from "./hooks";
 import { Button, Select, Spinner } from "flowbite-react";
 import AccountsJSON from "@/assets/accounts.json";
 import { shortAddress } from "./utils";
