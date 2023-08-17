@@ -20,7 +20,8 @@ const Navigation = () => {
         </Navbar.Brand>
       </Link>
 
-      <Navbar.Collapse>
+      <Navbar.Toggle />
+      <Navbar.Collapse className="max-w-full overflow-x-scroll px-4">
         <Navbar.Link as="div" className="flex gap-1 items-center h-full">
           <Link to="/contracts" className="font-bold">
             Contracts
@@ -36,9 +37,10 @@ const Navigation = () => {
             Transactions
           </Link>
         </Navbar.Link>
+        <Navbar.Link as="div" className="flex gap-1 items-center h-full">
+          <EthLabWalletButton />
+        </Navbar.Link>
       </Navbar.Collapse>
-      <EthLabWalletButton />
-      <Navbar.Toggle />
     </Navbar>
   );
 };

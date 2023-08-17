@@ -4,7 +4,7 @@ import type { editor } from "monaco-editor/esm/vs/editor/editor.api";
 export const ethlabTheme: CustomFlowbiteTheme = {
   button: {
     color: {
-      info: "bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900",
+      info: "bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 border border-gray-800 dark:border-gray-100",
       gray: "hover:text-gray-800 dark:hover:text-gray-100 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100",
     },
     pill: {
@@ -40,10 +40,18 @@ export const ethlabTheme: CustomFlowbiteTheme = {
 
   navbar: {
     link: {
-      base: "hover:underline md:hover:!text-black md:hover:dark:!text-white uppercase",
+      base: "hover:underline md:hover:!text-black md:hover:dark:!text-white uppercase p-4 md:px-0",
       active: {
         on: "text-black dark:text-white !underline",
       },
+    },
+    root: {
+      inner: {
+        base: "flex items-center justify-between flex-wrap md:flex-nowrap",
+      },
+    },
+    collapse: {
+      list: "mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium w-full overflow-x-scroll",
     },
   },
 
