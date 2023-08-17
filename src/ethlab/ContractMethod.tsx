@@ -1,8 +1,9 @@
-import { Contract } from "ethers";
+import { Contract, type ContractTransactionResponse } from "ethers";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { isPayable, stringifyWithBigInts } from "./utils";
-import { Accordion, Button, Spinner, TextInput } from "flowbite-react";
+import { Accordion, Badge, Button, Spinner, TextInput } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 interface ContractMethodProps {
   contract: Contract;
@@ -28,13 +29,46 @@ const ContractMethod: React.FC<ContractMethodProps> = (props) => {
       const entries = Object.fromEntries(formData.entries());
 
       // 2. call contract method
-      const result = await props.contract.getFunction(props.method)(
-        ...Object.values(entries)
-      );
-      setResult(stringifyWithBigInts(result, 2));
+      const func = props.contract.getFunction(props.method);
+      const result = await func(...Object.values(entries));
+
+      // 3. if it is a read method return the result
+      if (
+        func.fragment.stateMutability == "view" ||
+        func.fragment.stateMutability == "pure"
+      )
+        setResult(stringifyWithBigInts(result, 2));
+      else {
+        // otherwise return a transaction
+        const tx = result as ContractTransactionResponse;
+
+        const receipt = await tx.wait();
+        setResult(
+          <>
+            {receipt?.status == 1 ? (
+              <Badge className="inline-block mb-2 mr-2" color="success">
+                ✔️ Success
+              </Badge>
+            ) : (
+              <Badge className="inline-block mb-2 mr-2" color="danger">
+                ✕ Reverted
+              </Badge>
+            )}
+            Transaction Completed:{" "}
+            <Link
+              className="text-blue-600 dark:text-blue-500 underline"
+              to={`/transactions/${tx.hash}`}
+            >
+              {tx.hash.slice(0, 8)}...{tx.hash.slice(-6)}
+            </Link>
+          </>
+        );
+      }
     } catch (error: any) {
       toast.error(
-        `Error: '${props.method}()' failed: ${error?.message || error}`
+        `Error: '${props.method}()' failed: ${
+          error?.data || error?.message || error
+        }`
       );
       console.error(error);
     }
