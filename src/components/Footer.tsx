@@ -32,11 +32,11 @@ const Footer = () => (
         by{" "}
         <a
           className="text-blue-500 hover:underline"
-          href="https://twitter.com/ethlabxyz"
+          href="https://twitter.com/coderkass"
           target="_blank"
           rel="noopener noreferrer"
         >
-          @ethlabxyz
+          @coderkass
         </a>
       </small>
     </footer>
