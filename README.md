@@ -1,27 +1,50 @@
-# React + TypeScript + Vite
+# 🧪 EthLab React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EthLab is a tool to help you 🧰 <ins>**build**</ins> and 🚀 <ins>**ship**</ins> web3 projects
+faster.
 
-Currently, two official plugins are available:
+This standalone react template is a starting point for your project, designed to save you time during development and act as a foundation for your web3 app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Stack:** ✨ Vite + React + Tailwind + Ethers.js
 
-## Expanding the ESLint configuration
+> **⚠️ Experimental Alpha** EthLab React is currently in its early experimental alpha stages. Expect bugs, and breaking changes.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📦 Coolest Features:
 
-- Configure the top-level `parserOptions` property like this:
+- 📺 **Instant Contract UI**
+  - Generated interfaces for reading and writing to your deployed contracts. Allowing you to interact with your contract without any boilerplate.
+- 🚀 **Development to productions in seconds**
+  - Easily disable development features to migrate your UI to production mode with just a few lines of code.
+- 🔬 **Builtin Block explorer**
+  - EthLab can act as a lite etherscan, allowing you to view transaction details and more.
+- 👷‍♀️ **Hardhat Integrations**
+  - Advanced interactions with a hardhat network within the UI: snapshots, rollbacks, force mine and more.
+- 📝 **Quick scripting**
+  - Avoid boilerplate and save time when quickly writing code to test ideas, and debug your contracts with the scratchpad feature.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## 🤝 Contributing
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Contributions, feedback and bug reports are welcome. You can DM me on twitter [@CoderKass](https://twitter.com/coderkass).
+
+## 🗺️ Road map
+
+Below are some features and suggestions we are targeting in the short term.
+
+- [-] Save dark mode.
+- [-] First stable release
+- [-] Parse transaction data if possible on the transactions page.
+- [-] Support Rainbowkit.
+- [-] Parse and Display event logs.
+- [-] Ability to save scratchpad to localstorage.
+- [-] Provide typed interfaces for all known contracts in the scratchpad.
+- [-] Toast notifications for all transactions.
+- [-] Ability to open items scratchpad.
+  - [-] open contract in scratchpad.
+  - [-] open method in scratchpad.
+  - [-] open transaction ins scratchpad.
+- [-] UI overhaul.
+  - Remove flowbite as a dependency?
+
+---
+
+> Stars keep me going
