@@ -1,4 +1,4 @@
-import { Contract, type ContractTransactionResponse } from "ethers";
+import { Contract, type ContractTransactionResponse, parseEther } from "ethers";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { isPayable, stringifyWithBigInts } from "./utils";
@@ -21,16 +21,21 @@ const ContractMethod: React.FC<ContractMethodProps> = (props) => {
     try {
       // 0. set value if needed
       let opts: any = {};
-      if (isPayable(props.contract, props.method)) opts.value = value;
+      if (isPayable(props.contract, props.method))
+        opts.value = parseEther(value);
+      console.log("value", opts.value);
 
       // 1. get form data
       const form = e.target as HTMLFormElement;
       const formData = new FormData(form);
       const entries = Object.fromEntries(formData.entries());
 
+      // remove entry with name contract_eth_value
+      delete entries.contract_eth_value;
+
       // 2. call contract method
       const func = props.contract.getFunction(props.method);
-      const result = await func(...Object.values(entries));
+      const result = await func(...Object.values(entries), opts);
 
       // 3. if it is a read method return the result
       if (
@@ -118,13 +123,13 @@ const ContractMethod: React.FC<ContractMethodProps> = (props) => {
                 ))}
               {isPayable(props.contract, props.method) && (
                 <div className="w-full">
-                  <label className="block" htmlFor="value">
+                  <label className="block" htmlFor="contract_eth_value">
                     Eth Value
                   </label>
                   <TextInput
                     type="text"
-                    name="value"
-                    id="value"
+                    name="contract_eth_value"
+                    id="contract_eth_value"
                     placeholder="0"
                     onChange={(e) => setValue(e.target.value)}
                   />
