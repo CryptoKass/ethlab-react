@@ -1,0 +1,9 @@
+{
+  "0x13faede6": "cost()",
+  "0xead710c4": "greet(string)",
+  "0xef690cc0": "greeting()",
+  "0x8da5cb5b": "owner()",
+  "0x44a0d68a": "setCost(uint256)",
+  "0xa4136862": "setGreeting(string)",
+  "0x3ccfd60b": "withdraw()"
+}
